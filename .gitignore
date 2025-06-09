@@ -1,2 +1,33 @@
-# Ignore Visual Studio user-specific files
+# Visual Studio Code / Rider user settings
+.vscode/
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio temp files
 .vs/
+TestResults/
+*.DotSettings.user
+
+# Other
+*.vspscc
+*.vssscc
+_i.c
+_p.c
+*.ncb
+*.opendb
+*.sdf
+*.cache
+*~
+*.bak
+*.tmp
