@@ -8,41 +8,99 @@ using System.Threading.Tasks;
 
 namespace Anno1800Planner.Common
 {
-    public class SyncedCollection<TModel, TViewModel> where TViewModel : ModelDataVM<TModel>
+    /// <summary>
+    /// An ObservableCollection of ViewModels that stays in sync with a source list of Models.
+    /// This class is the single source of truth for all modifications to ensure both collections are synchronized.
+    /// </summary>
+    /// <typeparam name="TViewModel">The type of the ViewModel, which must wrap a Model.</typeparam>
+    /// <typeparam name="TModel">The type of the source Model.</typeparam>
+    public class SyncedCollection<TModel, TViewModel> : SelectableCollection<TViewModel>
+        where TViewModel : ModelDataVM<TModel> // Your existing constraint is perfect
     {
-        public SelectableCollection<TViewModel> ViewModels { get; }
+        private readonly IList<TModel> _sourceModelList;
+        private readonly Func<TModel, TViewModel> _viewModelFactory;
 
-        private readonly IList<TModel> _modelList;
+        // A dictionary for fast lookups from a Model to its corresponding ViewModel
+        private readonly Dictionary<TModel, TViewModel> _modelToViewModelMap = new();
 
         public SyncedCollection(
-            IList<TModel> modelList,
-            Func<TModel, TViewModel> factory)
+            IList<TModel> sourceModelList,
+            Func<TModel, TViewModel> viewModelFactory)
+            // Pass the initially populated list to the base ObservableCollection constructor
+            : base(sourceModelList.Select(viewModelFactory))
         {
-            _modelList = modelList;
+            _sourceModelList = sourceModelList;
+            _viewModelFactory = viewModelFactory;
 
-            ViewModels = [.. modelList.Select(factory)];
-
-            ViewModels.CollectionChanged += (s, e) =>
+            // Populate the lookup dictionary for fast access
+            foreach (var vm in this)
             {
-                switch (e.Action)
-                {
-                    case NotifyCollectionChangedAction.Add:
-                        foreach (TViewModel vm in e.NewItems!)
-                            _modelList.Add(vm.Model);
-                        break;
+                _modelToViewModelMap[vm.Model] = vm;
+            }
+        }
 
-                    case NotifyCollectionChangedAction.Remove:
-                        foreach (TViewModel vm in e.OldItems!)
-                            _modelList.Remove(vm.Model);
-                        break;
+        // Override the base class methods to inject our sync logic
 
-                    case NotifyCollectionChangedAction.Reset:
-                        _modelList.Clear();
-                        break;
-                }
+        protected override void InsertItem(int index, TViewModel viewModel)
+        {
+            // Add the model to the source list first
+            _sourceModelList.Insert(index, viewModel.Model);
+            _modelToViewModelMap[viewModel.Model] = viewModel;
 
-                Database.Instance.MarkDirty();
-            };
+            // Now call the base implementation, which will raise the CollectionChanged event
+            base.InsertItem(index, viewModel);
+
+            Database.Instance.MarkDirty();
+        }
+
+        protected override void RemoveItem(int index)
+        {
+            // Get the ViewModel we are about to remove
+            TViewModel viewModelToRemove = this[index];
+
+            // Remove the corresponding model from the source list
+            _sourceModelList.Remove(viewModelToRemove.Model);
+            _modelToViewModelMap.Remove(viewModelToRemove.Model);
+
+            // Now call the base implementation
+            base.RemoveItem(index);
+
+            Database.Instance.MarkDirty();
+        }
+
+        protected override void ClearItems()
+        {
+            // Clear the underlying model list and map first
+            _sourceModelList.Clear();
+            _modelToViewModelMap.Clear();
+
+            // Now call the base implementation
+            base.ClearItems();
+
+            Database.Instance.MarkDirty();
+        }
+
+        // New public methods to handle changes originating from the model side
+
+        /// <summary>
+        /// Adds a new model to the source list and creates/adds the corresponding ViewModel to this collection.
+        /// </summary>
+        public TViewModel AddItem(TModel model)
+        {
+            var viewModel = _viewModelFactory(model);
+            this.Add(viewModel); // This will call our overridden InsertItem method
+            return viewModel;
+        }
+
+        /// <summary>
+        /// Removes a model from the source list and removes the corresponding ViewModel from this collection.
+        /// </summary>
+        public void RemoveItem(TModel modelToRemove)
+        {
+            if (_modelToViewModelMap.TryGetValue(modelToRemove, out TViewModel viewModelToRemove))
+            {
+                this.Remove(viewModelToRemove); // This will call our overridden RemoveItem method
+            }
         }
     }
 }

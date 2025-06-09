@@ -20,9 +20,9 @@ namespace Anno1800Planner.GameData
 
         public double ProductionTime { get; set; } = 60.0;
 
-        private readonly List<ResourceId> Produces = new();
+        public List<ResourceId> Produces = new();
 
-        private readonly List<ResourceId> Requires = new();
+        public List<ResourceId> Requires = new();
 
 
         public bool CanUseTractor { get; set; }

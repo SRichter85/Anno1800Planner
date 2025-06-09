@@ -20,7 +20,7 @@ namespace Anno1800Planner.GameData
 
         public string Name { get; set; }
 
-        private readonly List<RegionId> ProducingRegions = new();
+        private List<RegionId> ProducingRegions = new();
 
         public bool RequiresFertility { get; set; } = false;
 

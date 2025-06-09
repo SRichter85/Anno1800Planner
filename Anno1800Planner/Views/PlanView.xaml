@@ -49,14 +49,16 @@
             <Separator Margin="10 0"/>
 
             <TextBlock Text="Islands" FontWeight="Bold" FontSize="16"/>
-            <Button Content="+ Add Island" Click="AddIsland_Click" Width="100" Margin="0 5 0 0"/>
+            <Button Content="+ Add Island"  Width="100" Margin="0 5 0 0"/>
+            <!--Click="AddIsland_Click"-->
             <ItemsControl ItemsSource="{Binding Islands}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Margin="0 2">
                             <TextBlock Text="{Binding Name}" Width="150"/>
-                            <Button Content="Remove" Tag="{Binding}" Click="RemoveIsland_Click" Width="60"/>
-                        </StackPanel>
+                                <Button Content="Remove" Tag="{Binding}"  Width="60"/>
+                                <!--Click="RemoveIsland_Click"-->
+                            </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

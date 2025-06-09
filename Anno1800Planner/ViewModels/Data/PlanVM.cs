@@ -18,7 +18,7 @@ namespace Anno1800Planner.ViewModels
                 s => new IdCountPairVM<ShipId, Ship>(s, Game.ShipResolver)
             );
 
-            foreach (var shipVM in Ships.ViewModels) shipVM.PropertyChanged += (_, _) => RefreshCalculated();
+            foreach (var shipVM in Ships) shipVM.PropertyChanged += (_, _) => RefreshCalculated();
 
             Islands = new SyncedCollection<Island, IslandVM>(
                 model.Islands,
@@ -37,7 +37,7 @@ namespace Anno1800Planner.ViewModels
         public SyncedCollection<Island, IslandVM> Islands { get; }
 
 
-        public int TotalShipMaintenance => Ships.ViewModels.Sum(vm => vm.Reference.Maintenance * vm.Count);
+        public int TotalShipMaintenance => Ships.Sum(vm => vm.Reference.Maintenance * vm.Count);
 
         private void RefreshCalculated()
         {

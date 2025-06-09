@@ -55,22 +55,22 @@ namespace Anno1800Planner.ViewModels
 
         internal void DeleteChain()
         {
-            if (_selectedChain != null)
-            {
-                var result = MessageBox.Show(
-                    $"Delete production chain '{_selectedChain.Name}'?",
-                    "Confirm Deletion",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning
-                );
+            //if (_selectedChain != null)
+            //{
+            //    var result = MessageBox.Show(
+            //        $"Delete production chain '{_selectedChain.Name}'?",
+            //        "Confirm Deletion",
+            //        MessageBoxButton.YesNo,
+            //        MessageBoxImage.Warning
+            //    );
 
-                if (result == MessageBoxResult.Yes)
-                {
-                    Database.Instance.ProductionChains.Remove(_selectedChain.Chain);
-                    ProductionChains.Remove(_selectedChain);
-                    SelectedChain = null;
-                }
-            }
+            //    if (result == MessageBoxResult.Yes)
+            //    {
+            //        Database.Instance.ProductionChains.Remove(_selectedChain.Chain);
+            //        ProductionChains.Remove(_selectedChain);
+            //        SelectedChain = null;
+            //    }
+            //}
         }
     }
 }

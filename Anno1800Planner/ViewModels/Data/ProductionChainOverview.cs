@@ -26,10 +26,10 @@ namespace Anno1800Planner.ViewModels
         }
 
         private static int CalculateMaintenance(ProductionChainVM chain) =>
-            chain.Buildings.ViewModels.Sum(b => b.Reference.Maintenance * b.Count);
+            chain.Buildings.Sum(b => b.Reference.Maintenance * b.Count);
 
         private static IReadOnlyList<IdCountPair<ResidentTier>> CalculateWorkforce(ProductionChainVM chain) =>
-            chain.Buildings.ViewModels
+            chain.Buildings
                 .GroupBy(b => b.Reference.Tier)
                 .Select(g => new IdCountPair<ResidentTier>(
                     Game.TierResolver(g.Key),
@@ -41,7 +41,7 @@ namespace Anno1800Planner.ViewModels
         {
             var result = new Dictionary<ResourceId, double>();
 
-            foreach (var b in chain.Buildings.ViewModels)
+            foreach (var b in chain.Buildings)
             {
                 double factor = b.Count * (60.0 / b.Reference.ProductionTime);
 

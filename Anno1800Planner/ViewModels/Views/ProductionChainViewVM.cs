@@ -35,7 +35,7 @@ namespace Anno1800Planner.ViewModels
             if (chain == null || selectedBuilding == null)
                 return;
 
-            var existing = chain.Buildings.ViewModels
+            var existing = chain.Buildings
                 .FirstOrDefault(vm => vm.Reference == selectedBuilding);
 
             if (existing != null)
@@ -46,7 +46,7 @@ namespace Anno1800Planner.ViewModels
             {
                 var model = new IdCountPair<BuildingId>(selectedBuilding.Id, 1);
                 var vm = new IdCountPairVM<BuildingId, Building>(model, Game.BuildingResolver);
-                chain.Buildings.ViewModels.Add(vm);
+                chain.Buildings.Add(vm);
             }
 
             Database.Instance.MarkDirty();

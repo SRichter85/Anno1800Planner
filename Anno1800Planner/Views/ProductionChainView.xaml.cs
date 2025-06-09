@@ -36,10 +36,10 @@ namespace Anno1800Planner.Views
         }
         private void AllBuildingsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (DataContext is ProductionChainViewVM vm && vm.SelectedBuilding is Building building)
-            {
-                vm.AddBuilding(building);
-            }
+            //if (DataContext is ProductionChainViewVM vm && vm.SelectedBuilding is Building building)
+            //{
+            //    vm.AddBuilding(building);
+            //}
         }
 
     }

@@ -45,7 +45,7 @@ namespace Anno1800Planner.ViewModels
 
         private void RemoveBuilding(IdCountPairVM<BuildingId, Building> vm)
         {
-            Buildings.ViewModels.Remove(vm);
+            Buildings.Remove(vm);
         }
 
     }
