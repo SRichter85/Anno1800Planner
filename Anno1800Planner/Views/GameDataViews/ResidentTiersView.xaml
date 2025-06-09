@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Anno1800Planner.Views.ResidentTiersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="Auto" Width="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="10">
+            <TextBlock Text="Resident Tiers" FontSize="18" FontWeight="Bold" Margin="0 0 0 10" />
+
+            <ItemsControl ItemsSource="{Binding Tiers}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" Margin="0 5" Padding="10">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" />
+                                <TextBlock>
+                                    <Run Text="Region: " />
+                                    <Run Text="{Binding Region.DisplayName, Mode=OneTime}" />
+                                </TextBlock>
+
+                                <TextBlock Text="Needs:" FontWeight="SemiBold" Margin="5 5 0 0" />
+                                <ItemsControl ItemsSource="{Binding Needs}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical" Margin="5,0,0,5">
+                                                <!-- Resource-based need -->
+                                                <StackPanel Orientation="Horizontal" Visibility="{Binding Resource, Converter={StaticResource NullToVisibilityConverter}}">
+                                                    <TextBlock Text="{Binding Resource.Name}" />
+                                                    <TextBlock Text=" (every " />
+                                                    <TextBlock Text="{Binding ConsumptionIntervalMinutes}" />
+                                                    <TextBlock Text=" min)" />
+                                                </StackPanel>
+
+                                                <!-- Building-based need -->
+                                                <StackPanel Orientation="Horizontal" Visibility="{Binding Building, Converter={StaticResource NullToVisibilityConverter}}">
+                                                    <TextBlock Text="{Binding Building.Name}" />
+                                                    <TextBlock Text=" (Building Access)" />
+                                                </StackPanel>
+
+                                                <TextBlock>
+                                                    <Run Text="→ Income: " />
+                                                    <Run Text="{Binding IncomeBonus}" />
+                                                    <Run Text=" / Workforce: " />
+                                                    <Run Text="{Binding WorkforceBonus}" />
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
