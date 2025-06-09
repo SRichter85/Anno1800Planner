@@ -13,7 +13,8 @@ namespace Anno1800Planner.GameData
 
         public RegionId Region { get; set; }
 
-        private readonly List<Need> Needs = new();
+        public readonly List<Need> Needs = new();
+        public int BaseResidentsPerHouse { get; set; } // Add this property
 
         public override string ToString() => Name;
 
@@ -25,8 +26,8 @@ namespace Anno1800Planner.GameData
 
         public static void FillDict(Dictionary<TierId, ResidentTier> dict)
         {
-            dict[TierId.Farmers] = new ResidentTier { Name = "Farmers", Region = RegionId.OldWorld };
-            dict[TierId.Workers] = new ResidentTier { Name = "Workers", Region = RegionId.OldWorld };
+            dict[TierId.Farmers] = new ResidentTier { Name = "Farmers", Region = RegionId.OldWorld, BaseResidentsPerHouse = 10 };
+            dict[TierId.Workers] = new ResidentTier { Name = "Workers", Region = RegionId.OldWorld, BaseResidentsPerHouse = 20 };
             dict[TierId.Artisans] = new ResidentTier { Name = "Artisans", Region = RegionId.OldWorld };
             dict[TierId.Engineers] = new ResidentTier { Name = "Engineers", Region = RegionId.OldWorld };
             dict[TierId.Investors] = new ResidentTier { Name = "Investors", Region = RegionId.OldWorld };
