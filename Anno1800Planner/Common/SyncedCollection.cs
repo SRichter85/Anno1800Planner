@@ -40,6 +40,58 @@ namespace Anno1800Planner.Common
             this.CollectionChanged += HandleCollectionChanged;
         }
 
+        /// <summary>
+        /// A convenience method that removes the currently selected item from the collection.
+        /// </summary>
+        public void RemoveSelectedItem()
+        {
+            var selectedItem = SelectedItem;
+            if (selectedItem != null)
+            {
+                SelectedItem = null;
+                this.Remove(selectedItem);
+            }
+        }
+        /// <summary>
+        /// Creates and adds a ViewModel for the given data entry. If a ViewModel for this
+        /// entry already exists, it returns the existing instance.
+        /// </summary>
+        /// <returns>The new or existing ViewModel for the data entry.</returns>
+        public TDataVM AddItem(TDbEntry data)
+        {
+            // First, check if a VM for this data already exists to avoid duplicates.
+            var existingVm = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.Data, data));
+            if (existingVm != null)
+            {
+                return existingVm;
+            }
+
+            // If not, create it using the static factory method.
+            var newVm = TDataVM.Create(data);
+
+            // Add the new VM to this collection. Our overridden InsertItem method will automatically
+            // handle adding the 'data' to the _sourceModelList and hooking up events.
+            this.Add(newVm);
+
+            return newVm;
+        }
+
+        /// <summary>
+        /// Finds the ViewModel corresponding to the given data entry and removes it.
+        /// </summary>
+        public void RemoveItem(TDbEntry data)
+        {
+            // Find the corresponding ViewModel by searching for the one that wraps this data.
+            var vmToRemove = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.Data, data));
+
+            if (vmToRemove != null)
+            {
+                // Our overridden RemoveItem method will automatically handle removing the
+                // data from the _sourceModelList and unhooking events.
+                this.Remove(vmToRemove);
+            }
+        }
+
         protected override void InsertItem(int index, TDataVM viewModel)
         {
             // Subscribe to the new item's property changes.

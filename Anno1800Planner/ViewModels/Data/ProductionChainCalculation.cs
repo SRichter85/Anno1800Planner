@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class ProductionChainOverview
+    public class ProductionChainCalculation
     {
         public int TotalMaintenance { get; }
         public IReadOnlyList<IdCountPair<ResidentTier>> TotalWorkforce { get; }
         public IReadOnlyList<ResourceDeltaEntry> ResourceDeltas { get; }
 
-        public ProductionChainOverview() {
+        public ProductionChainCalculation() {
             TotalWorkforce = new List<IdCountPair<ResidentTier>>();
             ResourceDeltas = new List<ResourceDeltaEntry>();
         }
-        public ProductionChainOverview(ProductionChainVM chain)
+        public ProductionChainCalculation(ProductionChainVM chain)
         {
             TotalMaintenance = CalculateMaintenance(chain);
             TotalWorkforce = CalculateWorkforce(chain);
@@ -26,14 +26,14 @@ namespace Anno1800Planner.ViewModels
         }
 
         private static int CalculateMaintenance(ProductionChainVM chain) =>
-            chain.Buildings.Sum(b => b.Reference.Maintenance * b.Count);
+            chain.Buildings.Sum(b => b.ChildViewModel.Reference.Maintenance * b.Count);
 
         private static IReadOnlyList<IdCountPair<ResidentTier>> CalculateWorkforce(ProductionChainVM chain) =>
             chain.Buildings
-                .GroupBy(b => b.Reference.Tier)
+                .GroupBy(b => b.ChildViewModel.Reference.Tier)
                 .Select(g => new IdCountPair<ResidentTier>(
                     Game.TierResolver(g.Key),
-                    g.Sum(b => b.Reference.Workforce * b.Count)
+                    g.Sum(b => b.ChildViewModel.Reference.Workforce * b.Count)
                 ))
                 .ToList();
 
@@ -43,16 +43,17 @@ namespace Anno1800Planner.ViewModels
 
             foreach (var b in chain.Buildings)
             {
-                double factor = b.Count * (60.0 / b.Reference.ProductionTime);
+                var buildingModel = b.ChildViewModel.Reference;
+                double factor = b.Count * (60.0 / buildingModel.ProductionTime);
 
-                foreach (var produced in b.Reference.Produces)
+                foreach (var produced in buildingModel.Produces)
                     result.TryAdd(produced, 0);
-                foreach (var required in b.Reference.Requires)
+                foreach (var required in buildingModel.Requires)
                     result.TryAdd(required, 0);
 
-                foreach (var produced in b.Reference.Produces)
+                foreach (var produced in buildingModel.Produces)
                     result[produced] += factor;
-                foreach (var required in b.Reference.Requires)
+                foreach (var required in buildingModel.Requires)
                     result[required] -= factor;
             }
 

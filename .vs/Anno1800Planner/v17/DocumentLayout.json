@@ -3,24 +3,68 @@
   "WorkspaceRootPath": "G:\\Projects\\Anno1800Planner\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\productionchainconfigurationviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\productionchainconfigurationviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\productionchainviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\productionchainviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\syncedcollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\common\\syncedcollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\wrapper\\idcountpair.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\common\\wrapper\\idcountpair.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\residenttiersviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\residenttiersviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\resourcesviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\resourcesviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\buildingsviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\buildingsviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\planvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\planvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\resourcevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\resourcevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\islandvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\islandvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\islandbuildingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\islandbuildingvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\productionchaincalculation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\productionchaincalculation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\productionchainvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\productionchainvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\gamedata\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\gamedata\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\wrapper\\wrappervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\common\\wrapper\\wrappervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\wrapper\\itemcountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\common\\wrapper\\itemcountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\wrapper\\idcountpair.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\common\\wrapper\\idcountpair.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\resourcevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\resourcevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\wrapper\\itemcountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\common\\wrapper\\itemcountvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\common\\notifypropertychangedbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\views\\productionchainview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\productionchainviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\productionchainviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\mainvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\mainvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -49,30 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\views\\planview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\views\\planview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\views\\productionchainconfigurationviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\views\\productionchainconfigurationviewvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\productionchainoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\productionchainoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\islandvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\islandvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\planvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\planvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\viewmodels\\data\\productionchainvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\viewmodels\\data\\productionchainvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\gamedata\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|solutionrelative:anno1800planner\\gamedata\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{09DB04FD-02D3-4E16-A938-493D559F6C6F}|Anno1800Planner\\Anno1800Planner.csproj|g:\\projects\\anno1800planner\\anno1800planner\\gamedata\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -106,7 +122,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -119,31 +135,188 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ItemCountVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAwwCsAAAAAAAAAAAAAAA==",
+              "Title": "ResidentTiersViewVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ResidentTiersViewVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\ResidentTiersViewVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ResidentTiersViewVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\ResidentTiersViewVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-10T22:41:21.022Z",
+              "WhenOpened": "2025-06-10T23:46:33.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ResourcesViewVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ResourcesViewVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\ResourcesViewVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ResourcesViewVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\ResourcesViewVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:46:31.75Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "NotifyPropertyChangedBase.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
-              "RelativeToolTip": "Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
+              "Title": "BuildingsViewVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\BuildingsViewVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\BuildingsViewVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\BuildingsViewVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\BuildingsViewVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T19:34:45.495Z"
+              "WhenOpened": "2025-06-10T23:46:26.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ResourceVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T19:37:36.542Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ProductionChainViewVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwCwAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:12:09.132Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductionChainConfigurationViewVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:11:49.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SyncedCollection.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\SyncedCollection.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\SyncedCollection.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\SyncedCollection.cs",
+              "RelativeToolTip": "Anno1800Planner\\Common\\SyncedCollection.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAADYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:04:36.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IslandBuildingVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\IslandBuildingVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\IslandBuildingVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\IslandBuildingVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\IslandBuildingVM.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA5wDEAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T23:07:26.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductionChainVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwBgAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:11:00.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IslandVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:11:27.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlanVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAiwB8AAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:11:20.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProductionChainCalculation.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainCalculation.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\ProductionChainCalculation.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainCalculation.cs",
+              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\ProductionChainCalculation.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:11:35.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Building.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Building.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Building.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Building.cs",
+              "RelativeToolTip": "Anno1800Planner\\GameData\\Building.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T16:02:25.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WrapperVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T19:32:19.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "IdCountPair.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\IdCountPair.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\Common\\Wrapper\\IdCountPair.cs",
@@ -156,20 +329,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WrapperVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\Common\\Wrapper\\WrapperVM.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAIwCcAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "ItemCountVM.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
+              "RelativeToolTip": "Anno1800Planner\\Common\\Wrapper\\ItemCountVM.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T19:32:19.632Z",
+              "WhenOpened": "2025-06-10T22:41:21.022Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
               "Title": "ProductionChainView.xaml.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Views\\ProductionChainView.xaml.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\Views\\ProductionChainView.xaml.cs",
@@ -181,45 +354,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ProductionChainViewVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\ProductionChainViewVM.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAiwDAAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "NotifyPropertyChangedBase.cs",
+              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
+              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
+              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
+              "RelativeToolTip": "Anno1800Planner\\Common\\NotifyPropertyChangedBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:12:09.132Z"
+              "WhenOpened": "2025-06-09T19:34:45.495Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SyncedCollection.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\SyncedCollection.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\Common\\SyncedCollection.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\SyncedCollection.cs*",
-              "RelativeToolTip": "Anno1800Planner\\Common\\SyncedCollection.cs*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAGMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:04:36.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ResourceVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\ResourceVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T19:37:36.542Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 19,
               "Title": "MainVM.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\MainVM.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\MainVM.cs",
@@ -231,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "SelectableCollection.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Common\\SelectableCollection.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\Common\\SelectableCollection.cs",
@@ -243,7 +390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 20,
               "Title": "PlanView.xaml",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Views\\PlanView.xaml",
               "RelativeDocumentMoniker": "Anno1800Planner\\Views\\PlanView.xaml",
@@ -255,7 +402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 21,
               "Title": "PlanView.xaml.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\Views\\PlanView.xaml.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\Views\\PlanView.xaml.cs",
@@ -267,70 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ProductionChainConfigurationViewVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Views\\ProductionChainConfigurationViewVM.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAA4wEgAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:11:49.964Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "ProductionChainOverview.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainOverview.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\ProductionChainOverview.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainOverview.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\ProductionChainOverview.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAUwCsAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:11:35.876Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "IslandVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\IslandVM.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAUwCkAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:11:27.985Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PlanVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\PlanVM.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAcwBQAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:11:20.048Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ProductionChainVM.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
-              "RelativeToolTip": "Anno1800Planner\\ViewModels\\Data\\ProductionChainVM.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAiwC8AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:11:00.616Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "Need.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Need.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Need.cs",
@@ -342,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "Region.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Region.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Region.cs",
@@ -354,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "Ship.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Ship.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Ship.cs",
@@ -366,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "Resource.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Resource.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Resource.cs",
@@ -378,19 +462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Building.cs",
-              "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Building.cs",
-              "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Building.cs",
-              "ToolTip": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Building.cs",
-              "RelativeToolTip": "Anno1800Planner\\GameData\\Building.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAcwBgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-09T16:02:25.859Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "Game.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\Game.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\Game.cs",
@@ -402,7 +474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "ResidentTier.cs",
               "DocumentMoniker": "G:\\Projects\\Anno1800Planner\\Anno1800Planner\\GameData\\ResidentTier.cs",
               "RelativeDocumentMoniker": "Anno1800Planner\\GameData\\ResidentTier.cs",

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 using Anno1800Planner.GameData;
 using Anno1800Planner.Models;
 using Anno1800Planner.Common;
+using System.Net;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class IslandBuildingVM : WrapperVM<IslandBuildingData>
+    public class IslandBuildingVM : WrapperVM<IslandBuildingData>, ICreatable<IslandBuildingVM, IslandBuildingData>
     {
         public IslandBuildingVM(IslandBuildingData model) : base(model) { }
 
@@ -45,5 +46,7 @@ namespace Anno1800Planner.ViewModels
             get => Data.WithElectricity;
             set => Set(() => Data.WithElectricity, value);
         }
+
+        public static IslandBuildingVM Create(IslandBuildingData data) => new IslandBuildingVM(data);
     }
 }

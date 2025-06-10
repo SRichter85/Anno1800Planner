@@ -12,25 +12,14 @@ using Anno1800Planner.Common;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class IslandVM : WrapperVM<Island>
+    public class IslandVM : WrapperVM<Island>, ICreatable<IslandVM, Island>
     {
 
         public IslandVM(Island island) : base(island)
         {
-            Buildings = new SyncedCollection<IslandBuildingData, IslandBuildingVM>(
-                island.Buildings,
-                b => new IslandBuildingVM(b)
-            );
-
-            ImportedResources = new SyncedCollection<ResourceId, ResourceVM>(
-                island.ImportedResources,
-                r => new ResourceVM(r)
-            );
-
-            ProductionChains = new SyncedCollection<IdCountPair<Guid>, IdCountPairVM<Guid, ProductionChain>>(
-                island.ProductionChains,
-                pc => new IdCountPairVM<Guid, ProductionChain>(pc, Database.ProductionChainResolver)
-            );
+            Buildings = new SyncedCollection<IslandBuildingData, IslandBuildingVM>(island.Buildings);
+            ImportedResources = new SyncedCollection<ResourceId, ResourceVM>(island.ImportedResources);
+            ProductionChains = new SyncedCountPairCollection<Guid, ProductionChainVM>(island.ProductionChains);
 
             LifestyleNeeds = Game.AllNeedLifestyle()
                 .Select(x => new LifestyleToggleVM(x, island.EnabledLifestyleNeeds))
@@ -39,10 +28,12 @@ namespace Anno1800Planner.ViewModels
 
         public SyncedCollection<IslandBuildingData, IslandBuildingVM> Buildings { get; }
 
-        public SyncedCollection<IdCountPair<Guid>, IdCountPairVM<Guid, ProductionChain>> ProductionChains { get; }
+        public SyncedCountPairCollection<Guid, ProductionChainVM> ProductionChains { get; }
 
         public SyncedCollection<ResourceId, ResourceVM> ImportedResources { get; }
 
         public List<LifestyleToggleVM> LifestyleNeeds { get; }
+
+        public static IslandVM Create(Island data) => new IslandVM(data);
     }
 }

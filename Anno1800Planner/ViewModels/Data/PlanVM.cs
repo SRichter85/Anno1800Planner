@@ -13,17 +13,9 @@ namespace Anno1800Planner.ViewModels
     {
         public PlanVM(Plan model) : base(model)
         {
-            Ships = new SyncedCollection<IdCountPair<ShipId>, IdCountPairVM<ShipId, Ship>>(
-                model.Ships,
-                s => new IdCountPairVM<ShipId, Ship>(s, Game.ShipResolver)
-            );
-
-            foreach (var shipVM in Ships) shipVM.PropertyChanged += (_, _) => RefreshCalculated();
-
-            Islands = new SyncedCollection<Island, IslandVM>(
-                model.Islands,
-                i => new IslandVM(i)
-            );
+            Ships = new SyncedCountPairCollection<ShipId, ShipVM>(model.Ships);
+            Ships.ModelDataChanged += (_, _) => RefreshCalculated();
+            Islands = new SyncedCollection<Island, IslandVM>(model.Islands);
         }
 
         public string Name
@@ -32,12 +24,12 @@ namespace Anno1800Planner.ViewModels
             set => Set(() => Data.Name, value);
         }
 
-        public SyncedCollection<IdCountPair<ShipId>, IdCountPairVM<ShipId, Ship>> Ships { get; }
+        public SyncedCountPairCollection<ShipId, ShipVM> Ships { get; }
 
         public SyncedCollection<Island, IslandVM> Islands { get; }
 
 
-        public int TotalShipMaintenance => Ships.Sum(vm => vm.Reference.Maintenance * vm.Count);
+        public int TotalShipMaintenance => Ships.Sum(vm => vm.ChildViewModel.Reference.Maintenance * vm.Count);
 
         private void RefreshCalculated()
         {

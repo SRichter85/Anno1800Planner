@@ -10,20 +10,21 @@ using System.Windows.Input;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class ProductionChainVM : WrapperVM<ProductionChain>
+    public class ProductionChainVM : WrapperVM<Guid, ProductionChain>, ICreatable<ProductionChainVM, Guid>
     {
-        public ProductionChainVM(ProductionChain chain) : base(chain)
+        public ProductionChainVM(Guid data) : base(data, Database.ProductionChainResolver)
         {
-            Buildings = new(chain.Buildings, b =>
-            {
-                var vm = new IdCountPairVM<BuildingId, Building>(b, Game.BuildingResolver);
-                vm.PropertyChanged += (_, _) => RefreshCalculated();
-                return vm;
-            });
+            Buildings = new SyncedCountPairCollection<BuildingId, BuildingVM>(Reference.Buildings);
+            Buildings.ModelDataChanged += (_, _) => RefreshCalculated();
+            RemoveBuildingCommand = new RelayCommand(
+                execute: Buildings.RemoveSelectedItem,
+                canExecute: () => Buildings.SelectedItem != null
+            );
         }
 
-        private ProductionChainOverview _overview = new();
-        public ProductionChainOverview Overview
+        private ProductionChainCalculation _overview = new();
+
+        public ProductionChainCalculation Overview
         {
             get => _overview;
             private set => Set(ref _overview, value);
@@ -31,22 +32,20 @@ namespace Anno1800Planner.ViewModels
 
         public string Name
         {
-            get => Data.Name;
-            set => Set(() => Data.Name, value);
+            get => Reference.Name;
+            set => Set(() => Reference.Name, value);
         }
 
-        public SyncedCollection<IdCountPair<BuildingId>, IdCountPairVM<BuildingId, Building>> Buildings { get; }
+        public ICommand RemoveBuildingCommand;
+
+        public SyncedCountPairCollection<BuildingId, BuildingVM> Buildings { get; }
+
         public void RefreshCalculated()
         {
-            Overview = new ProductionChainOverview(this);
+            Overview = new ProductionChainCalculation(this);
         }
 
-        public ICommand RemoveBuildingCommand => new RelayCommand<IdCountPairVM<BuildingId, Building>>(RemoveBuilding);
 
-        private void RemoveBuilding(IdCountPairVM<BuildingId, Building> vm)
-        {
-            Buildings.Remove(vm);
-        }
-
+        public static ProductionChainVM Create(Guid data) => new ProductionChainVM(data);
     }
 }
