@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class LifestyleToggleVM : ModelDataVM<Need>
+    public class LifestyleToggleVM : WrapperVM<Need>
     {
         private readonly List<string> _modelList;
 
@@ -18,9 +18,9 @@ namespace Anno1800Planner.ViewModels
             _modelList = modelList;
         }
 
-        public string DisplayName => Game.ResourceResolver(Model.Resource.Value).Name;
+        public string DisplayName => Game.ResourceResolver(Data.Resource.Value).Name;
 
-        private string Id => Model.Id;
+        private string Id => Data.Id;
 
         public bool IsEnabled
         {

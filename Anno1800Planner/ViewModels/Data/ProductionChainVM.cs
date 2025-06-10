@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class ProductionChainVM : ModelDataVM<ProductionChain>
+    public class ProductionChainVM : WrapperVM<ProductionChain>
     {
         public ProductionChainVM(ProductionChain chain) : base(chain)
         {
@@ -31,8 +31,8 @@ namespace Anno1800Planner.ViewModels
 
         public string Name
         {
-            get => Model.Name;
-            set => Set(() => Model.Name, value);
+            get => Data.Name;
+            set => Set(() => Data.Name, value);
         }
 
         public SyncedCollection<IdCountPair<BuildingId>, IdCountPairVM<BuildingId, Building>> Buildings { get; }

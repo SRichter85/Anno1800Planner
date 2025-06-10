@@ -10,40 +10,40 @@ using Anno1800Planner.Common;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class IslandBuildingVM : ModelDataVM<IslandBuildingData>
+    public class IslandBuildingVM : WrapperVM<IslandBuildingData>
     {
         public IslandBuildingVM(IslandBuildingData model) : base(model) { }
 
-        public BuildingId Id => Model.Id;
+        public BuildingId Id => Data.Id;
 
         public int Count
         {
-            get => Model.Count;
-            set => Set(() => Model.Count, value);
+            get => Data.Count;
+            set => Set(() => Data.Count, value);
         }
 
         public int WithTractor
         {
-            get => Model.WithTractor;
-            set => Set(() => Model.WithTractor, value);
+            get => Data.WithTractor;
+            set => Set(() => Data.WithTractor, value);
         }
 
         public int WithSilo
         {
-            get => Model.WithSilo;
-            set => Set(() => Model.WithSilo, value);
+            get => Data.WithSilo;
+            set => Set(() => Data.WithSilo, value);
         }
 
         public int WithFertilizer
         {
-            get => Model.WithFertilizer;
-            set => Set(() => Model.WithFertilizer, value);
+            get => Data.WithFertilizer;
+            set => Set(() => Data.WithFertilizer, value);
         }
 
         public bool WithElectricity
         {
-            get => Model.WithElectricity;
-            set => Set(() => Model.WithElectricity, value);
+            get => Data.WithElectricity;
+            set => Set(() => Data.WithElectricity, value);
         }
     }
 }

@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class ResourceVM : ModelDataVM<ResourceId, Resource>
+    public class ResourceVM : WrapperVM<ResourceId, Resource>
     {
         public ResourceVM(ResourceId id) : base(id, Game.ResourceResolver) { }
     }
-    public class ShipVM : ModelDataVM<ShipId, Ship>
+    public class ShipVM : WrapperVM<ShipId, Ship>
     {
         public ShipVM(ShipId id) : base(id, Game.ShipResolver) { }
     }
 
-    public class BuildingVM : ModelDataVM<BuildingId, Building>
+    public class BuildingVM : WrapperVM<BuildingId, Building>
     {
         public BuildingVM(BuildingId id) : base(id, Game.BuildingResolver) { }
     }
 
-    public class ResidentTierVM : ModelDataVM<TierId, ResidentTier>
+    public class ResidentTierVM : WrapperVM<TierId, ResidentTier>
     {
         public ResidentTierVM(TierId id) : base(id, Game.TierResolver) { }
     }
 
-    public class WorldRegionVM : ModelDataVM<RegionId, Region>
+    public class WorldRegionVM : WrapperVM<RegionId, Region>
     {
         public WorldRegionVM(RegionId id) : base(id, Game.RegionResolver) { }
     }

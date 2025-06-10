@@ -12,7 +12,7 @@ using Anno1800Planner.Common;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class IslandVM : ModelDataVM<Island>
+    public class IslandVM : WrapperVM<Island>
     {
 
         public IslandVM(Island island) : base(island)

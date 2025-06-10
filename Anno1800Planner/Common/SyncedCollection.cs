@@ -1,106 +1,103 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using Anno1800Planner.Common;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Anno1800Planner.Common
 {
     /// <summary>
-    /// An ObservableCollection of ViewModels that stays in sync with a source list of Models.
-    /// This class is the single source of truth for all modifications to ensure both collections are synchronized.
+    /// A powerful, self-managing collection that stays in sync with a source list of data.
+    /// It automatically creates and manages ViewModel items using the ICreatable contract.
+    /// It also provides a unified 'ModelDataChanged' event for all collection or item modifications.
     /// </summary>
-    /// <typeparam name="TViewModel">The type of the ViewModel, which must wrap a Model.</typeparam>
-    /// <typeparam name="TModel">The type of the source Model.</typeparam>
-    public class SyncedCollection<TModel, TViewModel> : SelectableCollection<TViewModel>
-        where TViewModel : ModelDataVM<TModel> // Your existing constraint is perfect
+    /// <typeparam name="TDbEntry">The type of the raw data entry from the database/source.</typeparam>
+    /// <typeparam name="TDataVM">The type of the ViewModel, which must be creatable from the database entry.</typeparam>
+    public class SyncedCollection<TDbEntry, TDataVM> : SelectableCollection<TDataVM>
+        // The constraint is the key: it ensures TDataVM has a static Create factory method.
+        where TDataVM : WrapperVM<TDbEntry>, ICreatable<TDataVM, TDbEntry>
     {
-        private readonly IList<TModel> _sourceModelList;
-        private readonly Func<TModel, TViewModel> _viewModelFactory;
+        private readonly IList<TDbEntry> _sourceModelList;
 
-        // A dictionary for fast lookups from a Model to its corresponding ViewModel
-        private readonly Dictionary<TModel, TViewModel> _modelToViewModelMap = new();
+        /// <summary>
+        /// Occurs when the collection is modified (items added/removed) OR when a property on an item changes.
+        /// The 'sender' will be the collection itself for collection changes, or the specific item for item property changes.
+        /// </summary>
+        public event PropertyChangedEventHandler? ModelDataChanged;
 
-        public SyncedCollection(
-            IList<TModel> sourceModelList,
-            Func<TModel, TViewModel> viewModelFactory)
-            // Pass the initially populated list to the base ObservableCollection constructor
-            : base(sourceModelList.Select(viewModelFactory))
+        public SyncedCollection(IList<TDbEntry> sourceModelList)
         {
             _sourceModelList = sourceModelList;
-            _viewModelFactory = viewModelFactory;
 
-            // Populate the lookup dictionary for fast access
-            foreach (var vm in this)
+            // Populate the initial items by calling the static Create method on the ViewModel type.
+            // No factory delegate is needed from the outside.
+            var viewModels = sourceModelList.Select(dbEntry => TDataVM.Create(dbEntry));
+            foreach (var vm in viewModels)
             {
-                _modelToViewModelMap[vm.Model] = vm;
+                this.Add(vm); // Use base Add during construction to avoid firing events yet.
             }
+
+            // Now that construction is complete, hook up the events.
+            this.CollectionChanged += HandleCollectionChanged;
         }
 
-        // Override the base class methods to inject our sync logic
-
-        protected override void InsertItem(int index, TViewModel viewModel)
+        protected override void InsertItem(int index, TDataVM viewModel)
         {
-            // Add the model to the source list first
-            _sourceModelList.Insert(index, viewModel.Model);
-            _modelToViewModelMap[viewModel.Model] = viewModel;
+            // Subscribe to the new item's property changes.
+            viewModel.PropertyChanged += HandleItemPropertyChanged;
 
-            // Now call the base implementation, which will raise the CollectionChanged event
+            // Sync the underlying model list.
+            _sourceModelList.Insert(index, viewModel.Data);
             base.InsertItem(index, viewModel);
-
-            Database.Instance.MarkDirty();
         }
 
         protected override void RemoveItem(int index)
         {
-            // Get the ViewModel we are about to remove
-            TViewModel viewModelToRemove = this[index];
+            TDataVM viewModelToRemove = this[index];
 
-            // Remove the corresponding model from the source list
-            _sourceModelList.Remove(viewModelToRemove.Model);
-            _modelToViewModelMap.Remove(viewModelToRemove.Model);
+            // Unsubscribe to prevent memory leaks.
+            viewModelToRemove.PropertyChanged -= HandleItemPropertyChanged;
 
-            // Now call the base implementation
+            // Sync the underlying model list.
+            _sourceModelList.Remove(viewModelToRemove.Data);
             base.RemoveItem(index);
-
-            Database.Instance.MarkDirty();
         }
 
         protected override void ClearItems()
         {
-            // Clear the underlying model list and map first
-            _sourceModelList.Clear();
-            _modelToViewModelMap.Clear();
-
-            // Now call the base implementation
-            base.ClearItems();
-
-            Database.Instance.MarkDirty();
-        }
-
-        // New public methods to handle changes originating from the model side
-
-        /// <summary>
-        /// Adds a new model to the source list and creates/adds the corresponding ViewModel to this collection.
-        /// </summary>
-        public TViewModel AddItem(TModel model)
-        {
-            var viewModel = _viewModelFactory(model);
-            this.Add(viewModel); // This will call our overridden InsertItem method
-            return viewModel;
-        }
-
-        /// <summary>
-        /// Removes a model from the source list and removes the corresponding ViewModel from this collection.
-        /// </summary>
-        public void RemoveItem(TModel modelToRemove)
-        {
-            if (_modelToViewModelMap.TryGetValue(modelToRemove, out TViewModel viewModelToRemove))
+            foreach (var vm in this)
             {
-                this.Remove(viewModelToRemove); // This will call our overridden RemoveItem method
+                vm.PropertyChanged -= HandleItemPropertyChanged;
             }
+            _sourceModelList.Clear();
+            base.ClearItems();
+        }
+
+        private void HandleItemPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            // Forward the event from the item as a ModelDataChanged event.
+            OnModelDataChanged(sender, e);
+        }
+
+        private void HandleCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            // When the collection changes, raise the unified event with the collection as the sender.
+            OnModelDataChanged(this, new PropertyChangedEventArgs("Item[]"));
+        }
+
+        protected virtual void OnModelDataChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            ModelDataChanged?.Invoke(sender, e);
+            Database.Instance.MarkDirty(); // Centralize marking the database as dirty.
+        }
+    }
+
+    // helper class for wrappers specifically around IdCountPair
+    public class SyncedCountPairCollection<TDbEntry, TDataVM> : SyncedCollection<IdCountPair<TDbEntry>, IdCountPairVM<TDbEntry, TDataVM>>
+        // The constraint is the key: it ensures TDataVM has a static Create factory method.
+        where TDataVM : WrapperVM<TDbEntry>, ICreatable<TDataVM, TDbEntry>
+    {
+        public SyncedCountPairCollection(IList<IdCountPair<TDbEntry>> sourceModelList) : base(sourceModelList)
+        {
         }
     }
 }

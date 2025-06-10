@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class PlanVM : ModelDataVM<Plan>
+    public class PlanVM : WrapperVM<Plan>
     {
         public PlanVM(Plan model) : base(model)
         {
@@ -28,8 +28,8 @@ namespace Anno1800Planner.ViewModels
 
         public string Name
         {
-            get => Model.Name;
-            set => Set(() => Model.Name, value);
+            get => Data.Name;
+            set => Set(() => Data.Name, value);
         }
 
         public SyncedCollection<IdCountPair<ShipId>, IdCountPairVM<ShipId, Ship>> Ships { get; }
