@@ -18,6 +18,8 @@ namespace Anno1800Planner.ViewModels
         public MainVM()
         {
             Resources = new ResourcesViewVM(this);
+            Buildings = new BuildingsViewVM(this);
+            ResidentTiers = new ResidentTiersViewVM(this);
             ProductionChains = new ProductionChainConfigurationViewVM(this);
         }
 
@@ -32,8 +34,13 @@ namespace Anno1800Planner.ViewModels
         public ProductionChainConfigurationViewVM ProductionChains { get; }
 
         public ResourcesViewVM Resources { get; }
+        public BuildingsViewVM Buildings { get; }
+        public ResidentTiersViewVM ResidentTiers { get; }
 
         public ICommand NavigateToResources => new RelayCommand(() => NavigateTo(Resources));
+        public ICommand NavigateToBuildings => new RelayCommand(() => NavigateTo(Buildings));
+        public ICommand NavigateToResidentTiers => new RelayCommand(() => NavigateTo(ResidentTiers));
+
         public void NavigateTo(MainContentViewModelBase vm)
         {
             CurrentContent = vm;

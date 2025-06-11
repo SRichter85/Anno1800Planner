@@ -13,7 +13,7 @@ namespace Anno1800Planner.GameData
 
         public RegionId Region { get; set; }
 
-        public List<Need> Needs = new();
+        public List<Need> Needs { get; } = new();
         public int BaseResidentsPerHouse { get; set; } // Add this property
 
         public override string ToString() => Name;

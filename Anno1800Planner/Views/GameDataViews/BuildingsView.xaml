@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Anno1800Planner.Views.BuildingsView"
+﻿<!--<UserControl x:Class="Anno1800Planner.Views.BuildingsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Height="Auto" Width="Auto">
@@ -15,7 +15,7 @@
 
                                 <TextBlock>
                                     <Run Text="Region: "/>
-                                    <Run Text="{Binding Region.DisplayName, Mode=OneTime}"/>
+                                    <Run Text="{Binding Region, Mode=OneTime}"/>
                                 </TextBlock>
 
                                 <TextBlock>
@@ -27,25 +27,19 @@
                                     <Run Text="{Binding ProductionTime}" />
                                     <Run Text="s" />
                                 </TextBlock>
-
-                                <TextBlock Text="Workforce:" FontWeight="SemiBold" Margin="0 5 0 0"/>
-                                <ItemsControl ItemsSource="{Binding Workforce}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock>
-                                                <Run Text="{Binding Tier.Name}"/>
-                                                <Run Text=": "/>
-                                                <Run Text="{Binding Amount}"/>
-                                            </TextBlock>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                <TextBlock>
+                                    <Run Text="Workforce: " />
+                                    <Run Text="{Binding Workforce}" />
+                                    <Run Text=" (" />
+                                    <Run Text="{Binding Tier}" />
+                                    <Run Text=")" />
+                                </TextBlock>
 
                                 <TextBlock Text="Produces:" FontWeight="SemiBold" Margin="5 0 0 0"/>
                                 <ItemsControl ItemsSource="{Binding Produces}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Name}" />
+                                            <TextBlock Text="{Binding}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -54,7 +48,7 @@
                                 <ItemsControl ItemsSource="{Binding Requires}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Name}" />
+                                            <TextBlock Text="{Binding}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -64,5 +58,78 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
+    </ScrollViewer>
+</UserControl>-->
+
+<UserControl x:Class="Anno1800Planner.Views.BuildingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+             xmlns:data="clr-namespace:Anno1800Planner.GameData"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:BuildingsViewVM, IsDesignTimeCreatable=False}"
+             Background="{StaticResource AnnoBackgroundBrush}">
+
+    <UserControl.Resources>
+        <!-- Define the CollectionViewSource for grouping -->
+        <CollectionViewSource x:Key="GroupedBuildings" Source="{Binding Buildings}">
+            <CollectionViewSource.GroupDescriptions>
+                <!-- First level of grouping: By Region -->
+                <PropertyGroupDescription PropertyName="Reference.Region" />
+                <!-- Second level of grouping: By Tier -->
+                <PropertyGroupDescription PropertyName="Reference.Tier" />
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+        <!-- The ItemsControl now binds to the GroupedBuildings resource -->
+        <ItemsControl ItemsSource="{Binding Source={StaticResource GroupedBuildings}}"
+                      HorizontalContentAlignment="Stretch">
+
+            <ItemsControl.ItemsPanel>
+                <!-- Use a UniformGrid for the final items panel -->
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="3" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <!-- Define the template for the groups -->
+            <ItemsControl.GroupStyle>
+                <!-- Template for the first level group (Region) -->
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <!-- The dark blue header bar -->
+                            <Border Background="{StaticResource AnnoHeaderBackgroundBrush}" CornerRadius="3" Padding="10,5" Margin="0,20,0,5">
+                                <TextBlock Text="{Binding Name}" Style="{StaticResource H1TextBlock}"/>
+                            </Border>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+                <!-- Template for the second level group (Tier) -->
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <!-- A more subtle header for the tier -->
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Margin="10,10,0,5" Foreground="{StaticResource AnnoSubtleTextBrush}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    <!-- This panel will host the items or the next level of groups -->
+                    <GroupStyle.Panel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </GroupStyle.Panel>
+                </GroupStyle>
+            </ItemsControl.GroupStyle>
+
+            <!-- The ItemTemplate remains the same, pointing to our card style -->
+            <ItemsControl.ItemTemplate>
+                <StaticResource ResourceKey="BuildingCardDataTemplate" />
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </ScrollViewer>
 </UserControl>

@@ -14,9 +14,9 @@ namespace Anno1800Planner.ViewModels
     {
         public BuildingsViewVM(MainVM mainVM) : base(mainVM)
         {
-            Resources = [.. Game.AllBuildings()];
+            Buildings = [.. Enum.GetValues<BuildingId>().Select(x => new BuildingVM(x))];
         }
 
-        public ObservableCollection<Building> Resources { get; }
+        public ObservableCollection<BuildingVM> Buildings { get; }
     }
 }
