@@ -1,4 +1,5 @@
 ﻿using Anno1800Planner.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Anno1800Planner.GameData
 {
@@ -8,25 +9,21 @@ namespace Anno1800Planner.GameData
         {
         }
 
-        public Resource(string name) : this(name, RegionId.Global)
-        {
-        }
-
-        public Resource(string name, RegionId region)
+        [SetsRequiredMembers]
+        public Resource(ResourceId id, string name, RegionId region = RegionId.Global, bool reqFertility = false) : base(id)
         {
             Name = name;
             ProducingRegions.Add(region);
+            RequiresFertility = reqFertility;
         }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public List<RegionId> ProducingRegions { get; } = new();
 
         public bool RequiresFertility { get; set; } = false;
 
-
         public override string ToString() => Name;
-
 
         private Resource AddProducingRegion(RegionId id)
         {
@@ -34,44 +31,17 @@ namespace Anno1800Planner.GameData
             return this;
         }
 
-        public static void FillDict(Dictionary<ResourceId, Resource> dict)
+        public static IEnumerable<Resource> CreateDefault()
         {
-            dict[ResourceId.Wood] = new Resource("Wood");
-            dict[ResourceId.Timber] = new Resource("Timber");
-            dict[ResourceId.WorkClothes] = new Resource("Work Clothes", RegionId.OldWorld);
-            dict[ResourceId.Schnapps] = new Resource("Schnapps", RegionId.OldWorld);
-            dict[ResourceId.Flour] = new Resource("Flour", RegionId.OldWorld);
-
-            
-
-            dict[ResourceId.Wheat] = new Resource
-            {
-                Name = "Wheat",
-                RequiresFertility = true
-            }
-            .AddProducingRegion(RegionId.OldWorld);
-
-            dict[ResourceId.Cotton] = new Resource
-            {
-                Name = "Cotton",
-                RequiresFertility = true
-            }
-            .AddProducingRegion(RegionId.NewWorld);
-
-            dict[ResourceId.GoldOre] = new Resource
-            {
-                Name = "Gold Ore",
-                RequiresFertility = true
-            }
-            .AddProducingRegion(RegionId.NewWorld);
-
-            dict[ResourceId.Fish] = new Resource
-            {
-                Name = "Fish",
-                RequiresFertility = false
-            }
-            .AddProducingRegion(RegionId.OldWorld)
-            .AddProducingRegion(RegionId.NewWorld);
+            yield return new Resource(ResourceId.Wood, "Wood");
+            yield return new Resource(ResourceId.Timber, "Timber");
+            yield return new Resource(ResourceId.Fish, "Fish", RegionId.OldWorld);
+            yield return new Resource(ResourceId.WorkClothes, "Work Clothes", RegionId.OldWorld);
+            yield return new Resource(ResourceId.Schnapps, "Schnapps", RegionId.OldWorld);
+            yield return new Resource(ResourceId.Flour, "Flour", RegionId.OldWorld);
+            yield return new Resource(ResourceId.Wheat, "Wheat", RegionId.OldWorld, true);
+            yield return new Resource(ResourceId.Cotton, "Cotton", RegionId.NewWorld, true);
+            yield return new Resource(ResourceId.GoldOre, "Gold Ore", RegionId.NewWorld, true);
         }
     }
 

@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="Anno1800Planner.Views.ProductionChainView_Current"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:ProductionChainVM, IsDesignTimeCreatable=False}">
+
+    <Border Style="{StaticResource AnnoPanelBorderStyle}">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="Current Chain" Style="{StaticResource H2TextBlock}" Margin="10"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="5,0">
+                <ItemsControl ItemsSource="{Binding Buildings}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5,2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding ChildViewModel.Reference.Name}" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" Text="x" VerticalAlignment="Center" Margin="10,0"/>
+                                <TextBox Grid.Column="2" Text="{Binding Count, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="50" TextAlignment="Center"/>
+                                <Button Grid.Column="3" Content="🗑️" ToolTip="Remove building" Margin="10,0,0,0" Style="{StaticResource AnnoButtonStyle}" Padding="5"
+                                        Command="{Binding DataContext.RemoveBuildingCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        CommandParameter="{Binding}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
+
+</UserControl>

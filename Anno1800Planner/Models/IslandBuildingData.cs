@@ -12,6 +12,7 @@ namespace Anno1800Planner.Models
     public class IslandBuildingData : IdCountPair<BuildingId>
     {
 
+        public IslandBuildingData(BuildingId id, int count = 0) : base(id, count) { }
         // Module upgrades (only apply to eligible buildings)
         public int WithTractor { get; set; }
         public int WithSilo { get; set; }

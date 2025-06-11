@@ -15,7 +15,25 @@ namespace Anno1800Planner.ViewModels
 {
     public class ProductionChainViewVM : MainContentViewModelBase
     {
-        public ProductionChainViewVM(MainVM main) : base(main) { }
+        public ProductionChainViewVM(MainVM main) : base(main)
+        {            
+            
+            // Populate the list of all buildings using our ICreatable pattern.
+            var buildingVms = Game.AllBuildings().Select(b => BuildingVM.Create(b.Id));
+            AllBuildings = new SelectableCollection<BuildingVM>(buildingVms);
+
+            AddBuildingToChainCommand = new RelayCommand(
+                execute: () =>
+                {
+                    // Call the AddBuilding method on the ProductionChainVM itself.
+                    if (AllBuildings.SelectedItem != null)
+                    {
+                        Chain?.AddBuilding(AllBuildings.SelectedItem);
+                    }
+                },
+                canExecute: () => AllBuildings.SelectedItem != null && Chain != null
+            );
+        }
 
         private ProductionChainVM? _chain;
         public ProductionChainVM? Chain
@@ -24,34 +42,13 @@ namespace Anno1800Planner.ViewModels
             set => Set(ref _chain, value);
         }
 
-        public SelectableCollection<Building> AllBuildings { get; } = new(Game.AllBuildings());
+        // The list of all available buildings the user can choose from.
+        // It's now a collection of BuildingVMs for consistency.
+        public SelectableCollection<BuildingVM> AllBuildings { get; }
 
-        public ICommand AddBuildingCommand => new RelayCommand(AddBuilding, () => AllBuildings.SelectedItem != null);
 
-        private void AddBuilding()
-        {
-            var chain = Chain;
-            var selectedBuilding = AllBuildings.SelectedItem;
-            if (chain == null || selectedBuilding == null)
-                return;
+        // This command is triggered when the user double-clicks an available building.
+        public ICommand AddBuildingToChainCommand { get; }
 
-            var existing = chain.Buildings.FirstOrDefault(vm => vm.ChildViewModel.Reference == selectedBuilding);
-            if (existing != null)
-            {
-                existing.Count++;
-            }
-            else
-            {
-                var model = new IdCountPair<BuildingId>(selectedBuilding.Id, 1);
-                chain.Buildings.AddItem(model);
-            }
-
-            DB.MarkDirty();
-        }
-
-        internal void AddSelectedBuildingToChain()
-        {
-            AddBuilding();
-        }
     }
 }

@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Anno1800Planner.GameData;
 using Anno1800Planner.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Anno1800Planner.Models
 {
     public class ProductionChain : ContainsId<Guid>
     {
-
-        public ProductionChain()
+        [SetsRequiredMembers]
+        public ProductionChain() : base(Guid.NewGuid())
         {
-            Id = Guid.NewGuid();
         }
 
         public string Name { get; set; } = string.Empty;

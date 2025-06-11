@@ -16,9 +16,11 @@ namespace Anno1800Planner.ViewModels
             : base(need)
         {
             _modelList = modelList;
+            var vm = NeedVM.Create(need);
+            Name = vm.Name;
         }
 
-        public string DisplayName => Game.ResourceResolver(Data.Resource.Value).Name;
+        public string Name { get; set; }
 
         private string Id => Data.Id;
 

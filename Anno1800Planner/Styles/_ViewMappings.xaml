@@ -26,5 +26,8 @@
     <DataTemplate DataType="{x:Type vm:ProductionChainConfigurationViewVM}">
         <views:ProductionChainConfigurationView />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ProductionChainVM}">
+        <views:ProductionChainView />
+    </DataTemplate>
 
 </ResourceDictionary>

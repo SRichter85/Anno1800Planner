@@ -1,6 +1,7 @@
 ﻿using Anno1800Planner.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,42 @@ namespace Anno1800Planner.GameData
 {
     public class Need : ContainsId<string>
     {
+        public Need() { }
+
+        [SetsRequiredMembers]
+        public Need(TierId tier,
+            ResourceId resource,
+            NeedCategory category,
+            double consumptionRate,
+            int workforceBonus,
+            double incomeBonus) : base($"{tier}/{resource}")
+        {
+            Tier = tier;
+            Resource = resource;
+            Category = category;
+            ConsumptionRate = consumptionRate;
+            WorkforceBonus = workforceBonus;
+            IncomeBonus = incomeBonus;
+        }
+
+        [SetsRequiredMembers]
+        public Need(TierId tier,
+            BuildingId building,
+            NeedCategory category,
+            int workforceBonus,
+            double incomeBonus) : base($"{tier}/{building}")
+        {
+            Tier = tier;
+            Building = building;
+            Category = category;
+            WorkforceBonus = workforceBonus;
+            IncomeBonus = incomeBonus;
+        }
+
+        public TierId Tier { get; set; }
+
         public ResourceId? Resource { get; set; }
+
         public BuildingId? Building { get; set; }
 
         // Only relevant if Resource is set

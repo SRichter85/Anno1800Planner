@@ -1,6 +1,7 @@
 ﻿using Anno1800Planner.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,11 +10,24 @@ namespace Anno1800Planner.GameData
 {
     public class ResidentTier : ContainsId<TierId>
     {
-        public string Name { get; set; }
+        public ResidentTier()
+        {
+        }
+
+        [SetsRequiredMembers]
+        public ResidentTier(TierId id, string name, int residentsPerHouse, RegionId region = RegionId.Global) : base(id)
+        {
+            Name = name;
+            Region = region;
+            BaseResidentsPerHouse = residentsPerHouse;
+        }
+
+        public string Name { get; set; } = string.Empty;
 
         public RegionId Region { get; set; }
 
         public List<Need> Needs { get; } = new();
+
         public int BaseResidentsPerHouse { get; set; }
 
         public override string ToString() => Name;
@@ -23,23 +37,26 @@ namespace Anno1800Planner.GameData
             Needs.Add(need);
             return this;
         }
-
-        public static void FillDict(Dictionary<TierId, ResidentTier> dict)
+        public static IEnumerable<ResidentTier> CreateDefault()
         {
-            dict[TierId.Farmers] = new ResidentTier { Name = "Farmers", Region = RegionId.OldWorld, BaseResidentsPerHouse = 10 };
-            dict[TierId.Workers] = new ResidentTier { Name = "Workers", Region = RegionId.OldWorld, BaseResidentsPerHouse = 20 };
-            dict[TierId.Artisans] = new ResidentTier { Name = "Artisans", Region = RegionId.OldWorld };
-            dict[TierId.Engineers] = new ResidentTier { Name = "Engineers", Region = RegionId.OldWorld };
-            dict[TierId.Investors] = new ResidentTier { Name = "Investors", Region = RegionId.OldWorld };
-            dict[TierId.Jornaleros] = new ResidentTier { Name = "Jornaleros", Region = RegionId.NewWorld };
-            dict[TierId.Obreros] = new ResidentTier { Name = "Obreros", Region = RegionId.NewWorld };
-            dict[TierId.Explorers] = new ResidentTier { Name = "Explorers", Region = RegionId.Arctic };
-            dict[TierId.Technicians] = new ResidentTier { Name = "Technicians", Region = RegionId.Arctic };
-            dict[TierId.Shephards] = new ResidentTier { Name = "Shephards", Region = RegionId.Enbesa };
-            dict[TierId.Elders] = new ResidentTier { Name = "Elders", Region = RegionId.Enbesa };
-            dict[TierId.Scholars] = new ResidentTier { Name = "Scholars" };
-            dict[TierId.Tourists] = new ResidentTier { Name = "Tourists" };
-            dict[TierId.Artistas] = new ResidentTier { Name = "Artistas", Region = RegionId.NewWorld };
+            yield return new ResidentTier(TierId.Farmers, "Farmers", 10, RegionId.OldWorld);
+            yield return new ResidentTier(TierId.Workers, "Workers", 20, RegionId.OldWorld);
+            yield return new ResidentTier(TierId.Artisans, "Artisans", 1, RegionId.OldWorld);
+            yield return new ResidentTier(TierId.Engineers, "Engineers", 1, RegionId.OldWorld);
+            yield return new ResidentTier(TierId.Investors, "Investors", 1, RegionId.OldWorld);
+
+            yield return new ResidentTier(TierId.Jornaleros, "Investors", 1, RegionId.NewWorld);
+            yield return new ResidentTier(TierId.Obreros, "Investors", 1, RegionId.NewWorld);
+            yield return new ResidentTier(TierId.Artistas, "Artistas", 1, RegionId.NewWorld);
+
+            yield return new ResidentTier(TierId.Explorers, "Explorers", 1, RegionId.Arctic);
+            yield return new ResidentTier(TierId.Technicians, "Technicians", 1, RegionId.Arctic);
+
+            yield return new ResidentTier(TierId.Shephards, "Shephards", 1, RegionId.Enbesa);
+            yield return new ResidentTier(TierId.Elders, "Elders", 1, RegionId.Enbesa);
+
+            yield return new ResidentTier(TierId.Scholars, "Scholars", 1);
+            yield return new ResidentTier(TierId.Tourists, "Tourists", 1);
         }
     }
 

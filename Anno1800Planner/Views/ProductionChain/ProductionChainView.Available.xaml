@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Anno1800Planner.Views.ProductionChainView_Available"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:ProductionChainViewVM, IsDesignTimeCreatable=False}">
+
+    <Border Style="{StaticResource AnnoPanelBorderStyle}">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="Available Buildings" Style="{StaticResource H2TextBlock}" Margin="10"/>
+
+            <!-- This ListBox binds to the AllBuildings collection from the parent ViewModel -->
+            <ListBox ItemsSource="{Binding AllBuildings}"
+                     SelectedItem="{Binding AllBuildings.SelectedItem, Mode=TwoWay}"
+                     Style="{StaticResource AnnoListBoxStyle}" 
+                     ItemContainerStyle="{StaticResource AnnoListBoxItemStyle}">
+
+                <ListBox.InputBindings>
+                    <!-- The command binding is simplified as it now directly accesses the DataContext -->
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding AddBuildingToChainCommand}"/>
+                </ListBox.InputBindings>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Border>
+
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Anno1800Planner.Views.ProductionChainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+             xmlns:local="clr-namespace:Anno1800Planner.Views"
+             xmlns:controls="clr-namespace:Anno1800Planner.Controls"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:ProductionChainVM, IsDesignTimeCreatable=False}"
+             Background="{DynamicResource AnnoBackgroundBrush}"
+             Padding="10">
+
+    <DockPanel>
+        <!-- Header with Back Button and Editable Name -->
+        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,10">
+            <controls:EditableTextBlock 
+                Text="{Binding Name}" 
+                FontSize="22"
+                FontWeight="SemiBold"
+                Foreground="{DynamicResource AnnoHeaderForegroundBrush}"
+                VerticalAlignment="Center"/>
+        </DockPanel>
+
+        <!-- Main editor grid with 3 rows -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.35*" MinHeight="150"/>
+                <!-- Available Buildings -->
+                <RowDefinition Height="Auto"/>
+                <!-- Separator -->
+                <RowDefinition Height="0.45*" MinHeight="200"/>
+                <!-- Current Chain -->
+                <RowDefinition Height="Auto"/>
+                <!-- Separator -->
+                <RowDefinition Height="0.20*" MinHeight="100"/>
+                <!-- Summary -->
+            </Grid.RowDefinitions>
+
+            <!-- Top Panel: Set DataContext to the parent VM -->
+            <local:ProductionChainView_Available Grid.Row="0" DataContext="{Binding}" />
+
+            <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Transparent"/>
+
+            <!-- Middle Panel: Set DataContext to the specific chain being edited -->
+            <local:ProductionChainView_Current Grid.Row="2" DataContext="{Binding Chain}" />
+
+            <GridSplitter Grid.Row="3" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Transparent"/>
+
+            <!-- Bottom Panel: Also set DataContext to the specific chain -->
+            <local:ProductionChainView_Summary Grid.Row="4" DataContext="{Binding Chain}" />
+        </Grid>
+    </DockPanel>
+</UserControl>

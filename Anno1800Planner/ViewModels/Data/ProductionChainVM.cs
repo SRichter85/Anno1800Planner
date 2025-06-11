@@ -12,15 +12,6 @@ namespace Anno1800Planner.ViewModels
 {
     public class ProductionChainVM : WrapperVM<Guid, ProductionChain>, ICreatable<ProductionChainVM, Guid>, ICreatable<ProductionChainVM, ProductionChain>
     {
-        //public ProductionChainVM(Guid data) : base(data, Database.ProductionChainResolver)
-        //{
-        //    Buildings = new SyncedCountPairCollection<BuildingId, BuildingVM>(Reference.Buildings);
-        //    Buildings.ModelDataChanged += (_, _) => RefreshCalculated();
-        //    RemoveBuildingCommand = new RelayCommand(
-        //        execute: Buildings.RemoveSelectedItem,
-        //        canExecute: () => Buildings.SelectedItem != null
-        //    );
-        //}
 
         public ProductionChainVM(ProductionChain model) : base(model)
         {
@@ -53,6 +44,24 @@ namespace Anno1800Planner.ViewModels
         public void RefreshCalculated()
         {
             Overview = new ProductionChainCalculation(this);
+        }        
+        
+        /// <summary>
+        /// Adds a building to the chain, or increments its count if it already exists.
+        /// This logic is now properly encapsulated within this class.
+        /// </summary>
+        public void AddBuilding(BuildingVM buildingToAdd)
+        {
+            var existing = Buildings.FirstOrDefault(b => b.ChildViewModel == buildingToAdd);
+            if (existing != null)
+            {
+                existing.Count++;
+            }
+            else
+            {
+                var model = new IdCountPair<BuildingId>(buildingToAdd.Data, 1);
+                Buildings.AddItem(model);
+            }
         }
 
 

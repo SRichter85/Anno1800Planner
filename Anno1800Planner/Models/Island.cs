@@ -13,7 +13,7 @@ namespace Anno1800Planner.Models
     public class Island
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         // Population per tier
         public List<IdCountPair<TierId>> Residents { get; set; } = new();

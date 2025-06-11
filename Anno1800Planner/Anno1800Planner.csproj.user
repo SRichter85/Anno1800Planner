@@ -17,13 +17,22 @@
     <Compile Update="Views\PlanView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ProductionChainConfigurationView.xaml.cs">
+    <Compile Update="Views\ProductionChain\ProductionChainView.Current.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ProductionChainView.xaml.cs">
+    <Compile Update="Views\ProductionChain\ProductionChainView.Summary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ProductionChain\ProductionChainConfigurationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ProductionChain\ProductionChainView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\GameDataViews\ResidentTiersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ProductionChain\ProductionChainView.Available.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

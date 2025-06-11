@@ -1,6 +1,7 @@
 ﻿using Anno1800Planner.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,18 +11,28 @@ namespace Anno1800Planner.GameData
 
     public class Region : ContainsId<RegionId>
     {
-        public string DisplayName { get; set;  }
-
-        public override string ToString() => DisplayName;
-
-        public static void FillDict(Dictionary<RegionId, Region> dict)
+        public Region()
         {
-            dict[RegionId.Global] = new Region { DisplayName = "Global" };
-            dict[RegionId.OldWorld] = new Region { DisplayName = "Old World" };
-            dict[RegionId.NewWorld] = new Region { DisplayName = "New World" };
-            dict[RegionId.Arctic] = new Region { DisplayName = "Arctic" };
-            dict[RegionId.Enbesa] = new Region { DisplayName = "Enbesa" };
-            dict[RegionId.CapeTrelawney] = new Region { DisplayName = "Cape Trelawney" };
+        }
+
+        [SetsRequiredMembers]
+        public Region(RegionId id, string name) : base(id)
+        {
+            Name = name;
+        }
+
+        public string Name { get; set; } = string.Empty;
+
+        public override string ToString() => Name;
+
+        public static IEnumerable<Region> CreateDefault()
+        {
+            yield return new Region(RegionId.Global, "Global");
+            yield return new Region(RegionId.OldWorld, "Old World");
+            yield return new Region(RegionId.NewWorld, "New World");
+            yield return new Region(RegionId.Arctic, "Arctic");
+            yield return new Region(RegionId.Enbesa, "Enbesa");
+            yield return new Region(RegionId.CapeTrelawney, "Cape Trelawney");
         }
     }
 

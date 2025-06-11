@@ -22,7 +22,7 @@ namespace Anno1800Planner.Common
         TData GetDbEntry();
     }
 
-    public abstract class WrapperVM<TData> : NotifyPropertyChangedBase
+    public abstract class WrapperVM<TData> : NotifyPropertyChangedBase where TData: notnull
     {
         /// <summary>
         /// Note, based on TModel it can be a class or an id
@@ -39,7 +39,7 @@ namespace Anno1800Planner.Common
     /// An abstract base class for ViewModels that wrap a a database entry which maps to ContainsId<TId>.
     /// It automatically exposes the reference.
     /// </summary>
-    public abstract class WrapperVM<TData, TRef> : WrapperVM<TData>
+    public abstract class WrapperVM<TData, TRef> : WrapperVM<TData> where TData: notnull
         where TRef : ContainsId<TData> // Generic constraint ensures the model has an .Id property
     {
         protected WrapperVM(TRef reference) : base(reference.Id)

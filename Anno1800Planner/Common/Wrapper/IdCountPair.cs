@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Anno1800Planner.Common
 {
-    public class IdCountPair<T>
+    public class IdCountPair<T> where T: notnull
     {
         public T Id { get; set; }
         public int Count { get; set; }
-
-        public IdCountPair() { }
 
         public IdCountPair(T item, int count = 0)
         {
@@ -22,6 +20,7 @@ namespace Anno1800Planner.Common
 
 
     public class IdCountPairVM<TId, TChildViewModel> : WrapperVM<IdCountPair<TId>>, ICreatable<IdCountPairVM<TId, TChildViewModel>, IdCountPair<TId>>
+        where TId : notnull
         where TChildViewModel : WrapperVM<TId>, ICreatable<TChildViewModel, TId>
     {
 

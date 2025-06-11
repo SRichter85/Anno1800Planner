@@ -113,4 +113,11 @@ dictionary to make them available across the entire application.
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="AnnoPanelBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{DynamicResource AnnoCardBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AnnoBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
 </ResourceDictionary>

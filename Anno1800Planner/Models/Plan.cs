@@ -13,15 +13,13 @@ namespace Anno1800Planner.Models
 {
     public class Plan : ContainsId<Guid>
     {
-        public Guid Id { get; set; }
         public Plan()
         {
             // Initialize ships with all known types at 0
             Ships.AddRange(Enum.GetValues<ShipId>().Select(x => new IdCountPair<ShipId>(x)));
-            Id = Guid.NewGuid();
         }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public List<IdCountPair<ShipId>> Ships { get; set; } = new();
 

@@ -52,24 +52,31 @@
             </DockPanel>
         </Border>
 
-        <!-- Right Panel: Placeholder for Selected Chain Details -->
-        <Border Grid.Column="1" Margin="10,0,0,0"
-                Background="{DynamicResource AnnoCardBackgroundBrush}"
-                BorderBrush="{DynamicResource AnnoBorderBrush}"
-                BorderThickness="1"
-                CornerRadius="4"
-                Padding="20">
 
-            <!-- This ContentControl will display the view for the selected ProductionChainVM -->
-            <!-- You would typically have another DataTemplate in App.xaml for ProductionChainVM -->
-            <!-- For now, we show a placeholder -->
-            <TextBlock Text="Select a chain to edit."
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource H2TextBlock}"
-                       Foreground="{DynamicResource AnnoSubtleTextBrush}"
-                       Visibility="{Binding ProductionChains.SelectedItem, Converter={StaticResource NullToVisibleConverter}}"/>
+        <Grid Grid.Column="1">
+            <!-- 1. The Editor View -->
+            <!-- This ContentControl is bound to the selected item. -->
+            <!-- It uses your converter to become VISIBLE only when an item is selected. -->
+            <ContentControl Content="{Binding ProductionChains.SelectedItem}"
+                    Visibility="{Binding ProductionChains.SelectedItem, Converter={StaticResource NullToCollapsedConverter}}" />
 
-        </Border>
+            <!-- 2. The Placeholder Text -->
+            <!-- This TextBlock is only VISIBLE when no item is selected. -->
+            <TextBlock Text="Select or create a chain to edit."
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               Style="{StaticResource H2TextBlock}"
+               Foreground="{DynamicResource AnnoSubtleTextBrush}"
+               Visibility="{Binding ProductionChains.SelectedItem, Converter={StaticResource NullToVisibleConverter}}"/>
+        </Grid>
+        <!-- Right Panel: Displays the editor OR a placeholder -->
+        <!--<Border Grid.Column="1" Margin="10,0,0,0"
+            Background="{DynamicResource AnnoCardBackgroundBrush}"
+            BorderBrush="{DynamicResource AnnoBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="4"
+            Padding="20">
+
+        </Border>-->
     </Grid>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using Anno1800Planner.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,25 @@ namespace Anno1800Planner.GameData
 
     public class Building : ContainsId<BuildingId>
     {
-        public string Name { get; set; }
+        public Building() { }
+
+        [SetsRequiredMembers]
+        public Building(BuildingId id,
+            string name,
+            TierId tier,
+            int maintenance,
+            int workforce,
+            RegionId region = RegionId.Global,
+            double productionTime = 60.0) : base(id)
+        {
+            Name = name;
+            Tier = tier;
+            Maintenance = maintenance;
+            Workforce = workforce;
+            Region = region;
+            ProductionTime = productionTime;
+        }
+        public string Name { get; set; } = string.Empty;
         public RegionId Region { get; set; } = RegionId.Global;
 
         public TierId Tier { get; set; }
@@ -47,91 +66,37 @@ namespace Anno1800Planner.GameData
             return this;
         }
 
-        public static void FillDict(Dictionary<BuildingId, Building> dict)
+        public static IEnumerable<Building> CreateDefault()
         {
-            dict[BuildingId.Marketplace] = new Building
-            {
-                Name = "Marketplace",
-                Tier = TierId.Farmers,
-                Maintenance = 20,
-            };
-
-            dict[BuildingId.SmallWarehouse] = new Building
-            {
-                Name = "Small Warehouse",
-                Tier = TierId.Farmers,
-                Maintenance = 20,
-            };
-
-            dict[BuildingId.Lumberjack] = new Building
-            {
-                Name = "Lumberjack's Hut",
-                Tier = TierId.Farmers,
-                Maintenance = 10,
-                Workforce = 5,
-                ProductionTime = 15.0,
-            }
-            .AddProducedResource(ResourceId.Wood);
-            
-
-            dict[BuildingId.Sawmill] = new Building
-            {
-                Name = "Sawmill",
-                Tier = TierId.Farmers,
-                Maintenance = 10,
-                Workforce = 10,
-                ProductionTime = 15.0,
-            }
-            .AddRequiredResource(ResourceId.Wood)
-            .AddProducedResource(ResourceId.Timber);
-
-            dict[BuildingId.Pub] = new Building
-            {
-                Name = "Pub",
-                Tier = TierId.Farmers,
-                Maintenance = 1,
-            };
-            
+            yield return new Building(BuildingId.Marketplace, "Marketplace", TierId.Farmers, 20, 0);
+            yield return new Building(BuildingId.SmallWarehouse, "Small Warehouse", TierId.Farmers, 20, 0);
+            yield return new Building(BuildingId.Lumberjack, "Lumberjack's Hut", TierId.Farmers, 10, 5, productionTime: 15.0)
+                .AddProducedResource(ResourceId.Wood);
+            yield return new Building(BuildingId.Sawmill, "Sawmill", TierId.Farmers, 10, 10, productionTime: 15.0)
+                .AddRequiredResource(ResourceId.Wood)
+                .AddProducedResource(ResourceId.Timber);
+            yield return new Building(BuildingId.Pub, "Pub", TierId.Farmers, 1, 0, RegionId.OldWorld);
 
 
-                dict[BuildingId.GrainFarm] = new Building
+
+            yield return new Building(BuildingId.GrainFarm, "Grain Farm", TierId.Farmers, 10, 50, RegionId.OldWorld, 60.0)
             {
-                Name = "Grain Farm",
-                Tier = TierId.Farmers,
-                Maintenance = 10,
-                Workforce = 50,
-                ProductionTime = 60,
-                Region = RegionId.OldWorld,
                 CanUseTractor = true,
                 CanUseFertilizer = true
             }
             .AddProducedResource(ResourceId.Wheat);
-
-            dict[BuildingId.CottonPlantation ] = new Building
+            yield return new Building(BuildingId.Mill, "Mill", TierId.Farmers, 30, 20, RegionId.OldWorld, 30.0)
             {
-                Name = "Cotton Plantation",
-                Tier = TierId.Jornaleros,
-                Maintenance = 20,
-                Workforce = 100,
-                ProductionTime = 60,
-                Region = RegionId.NewWorld,
-                CanUseTractor = true,
-                CanUseFertilizer = true
-            }
-            .AddProducedResource(ResourceId.Cotton);
-
-
-            dict[BuildingId.Mill] = new Building
-            {
-                Name = "Mill",
-                Maintenance = 30,
-                Workforce = 20,
-                Region = RegionId.OldWorld,
-                Tier = TierId.Farmers,
-                ProductionTime = 30,
                 CanUseEletricity = true
             }
             .AddRequiredResource(ResourceId.Wheat)
+            .AddProducedResource(ResourceId.Cotton);
+
+            yield return new Building(BuildingId.CottonPlantation, "Cotton Plantation", TierId.Jornaleros, 20, 100, RegionId.NewWorld, 60.0)
+            {
+                CanUseTractor = true,
+                CanUseFertilizer = true
+            }
             .AddProducedResource(ResourceId.Cotton);
         }
     }

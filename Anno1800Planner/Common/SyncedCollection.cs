@@ -147,6 +147,7 @@ namespace Anno1800Planner.Common
 
     // helper class for wrappers specifically around IdCountPair
     public class SyncedCountPairCollection<TDbEntry, TDataVM> : SyncedCollection<IdCountPair<TDbEntry>, IdCountPairVM<TDbEntry, TDataVM>>
+        where TDbEntry : notnull
         // The constraint is the key: it ensures TDataVM has a static Create factory method.
         where TDataVM : WrapperVM<TDbEntry>, ICreatable<TDataVM, TDbEntry>
     {
