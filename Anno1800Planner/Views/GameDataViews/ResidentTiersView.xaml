@@ -17,7 +17,7 @@
         </CollectionViewSource>
     </UserControl.Resources>
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20" HorizontalContentAlignment="Stretch">
         <!-- The main ItemsControl binds to our grouped source -->
         <ItemsControl ItemsSource="{Binding Source={StaticResource GroupedTiers}}"
                       HorizontalContentAlignment="Stretch">

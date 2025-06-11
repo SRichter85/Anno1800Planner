@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Anno1800Planner")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+848cf42c6c81a4e4dcd8353a744d5427da92c2a4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f9a5c7a4c568b57260661c4db74d47397cd7b1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Anno1800Planner")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Anno1800Planner")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

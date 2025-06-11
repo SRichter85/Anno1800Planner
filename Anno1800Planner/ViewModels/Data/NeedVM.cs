@@ -38,19 +38,15 @@ namespace Anno1800Planner.ViewModels
             }
         }
 
-        /// <summary>
-        /// Gets a formatted string for the consumption rate, in tons per minute.
-        /// </summary>
-        public string ConsumptionRateDisplay
+        public string SuppliedResidentsDisplay
         {
             get
             {
-                if (Data.IsForResource && Data.ConsumptionIntervalMinutes > 0)
+                // Assuming your Need model now has a 'ConsumptionRate' property in t/min
+                if (Data.IsForResource && Data.ConsumptionRate > 0)
                 {
-                    // Assuming the interval is how many minutes it takes to consume 1 ton.
-                    // The rate in t/min is the reciprocal.
-                    double rate = 1.0 / Data.ConsumptionIntervalMinutes;
-                    return $"{rate:F4} t/min";
+                    double suppliedResidents = 1.0 / Data.ConsumptionRate;
+                    return $"{suppliedResidents:F1} 🏠";
                 }
                 return string.Empty;
             }

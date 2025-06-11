@@ -13,7 +13,7 @@ namespace Anno1800Planner.GameData
         public BuildingId? Building { get; set; }
 
         // Only relevant if Resource is set
-        public double ConsumptionIntervalMinutes { get; set; }
+        public double ConsumptionRate { get; set; }
 
         public NeedCategory Category { get; set; }
 
@@ -37,7 +37,7 @@ namespace Anno1800Planner.GameData
         public override string ToString()
         {
             if (Resource != null)
-                return $"{Resource} every {ConsumptionIntervalMinutes} min ({Category})";
+                return $"{Resource} every {ConsumptionRate} min ({Category})";
             if (Building != null)
                 return $"{Building} Access ({Category})";
             return $"[Unknown Need]";

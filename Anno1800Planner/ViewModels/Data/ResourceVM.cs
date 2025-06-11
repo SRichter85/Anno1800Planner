@@ -42,6 +42,13 @@ namespace Anno1800Planner.ViewModels
 
 
         public List<NeedVM> Needs { get; } = new();
+
+        public IEnumerable<NeedVM> BasicNeeds => Needs.Where(n => n.Data.Category == NeedCategory.Basic);
+
+        public IEnumerable<NeedVM> LuxuryNeeds => Needs.Where(n => n.Data.Category == NeedCategory.Luxury);
+
+        public IEnumerable<NeedVM> LifestyleNeeds => Needs.Where(n => n.Data.Category == NeedCategory.Lifestyle);
+
     }
 
     public class WorldRegionVM : WrapperVM<RegionId, Region>, ICreatable<WorldRegionVM, RegionId>

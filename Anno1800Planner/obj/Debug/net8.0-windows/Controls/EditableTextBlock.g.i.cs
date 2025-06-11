@@ -60,7 +60,7 @@ namespace Anno1800Planner.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Anno1800Planner;V1.0.0.0;component/controls/editabletextblock.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Anno1800Planner;component/controls/editabletextblock.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\EditableTextBlock.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
