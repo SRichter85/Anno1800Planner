@@ -14,7 +14,7 @@ namespace Anno1800Planner.Common
     /// <typeparam name="TDataVM">The type of the ViewModel, which must be creatable from the database entry.</typeparam>
     public class SyncedCollection<TDbEntry, TDataVM> : SelectableCollection<TDataVM>
         // The constraint is the key: it ensures TDataVM has a static Create factory method.
-        where TDataVM : WrapperVM<TDbEntry>, ICreatable<TDataVM, TDbEntry>
+        where TDataVM : /*WrapperVM<TDbEntry>,*/ ICreatable<TDataVM, TDbEntry>, INotifyPropertyChanged
     {
         private readonly IList<TDbEntry> _sourceModelList;
 
@@ -24,16 +24,14 @@ namespace Anno1800Planner.Common
         /// </summary>
         public event PropertyChangedEventHandler? ModelDataChanged;
 
-        public SyncedCollection(IList<TDbEntry> sourceModelList)
+        public SyncedCollection(IList<TDbEntry> sourceModelList) : base(sourceModelList.Select(dbEntry => TDataVM.Create(dbEntry)))
         {
             _sourceModelList = sourceModelList;
 
-            // Populate the initial items by calling the static Create method on the ViewModel type.
-            // No factory delegate is needed from the outside.
-            var viewModels = sourceModelList.Select(dbEntry => TDataVM.Create(dbEntry));
-            foreach (var vm in viewModels)
+            // 2. Now that the initial items exist, subscribe to their events.
+            foreach (var vm in this)
             {
-                this.Add(vm); // Use base Add during construction to avoid firing events yet.
+                vm.PropertyChanged += HandleItemPropertyChanged;
             }
 
             // Now that construction is complete, hook up the events.
@@ -48,7 +46,7 @@ namespace Anno1800Planner.Common
             var selectedItem = SelectedItem;
             if (selectedItem != null)
             {
-                SelectedItem = null;
+                SelectedItem = default(TDataVM);
                 this.Remove(selectedItem);
             }
         }
@@ -60,7 +58,8 @@ namespace Anno1800Planner.Common
         public TDataVM AddItem(TDbEntry data)
         {
             // First, check if a VM for this data already exists to avoid duplicates.
-            var existingVm = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.Data, data));
+            //var existingVm = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.Data, data));
+            var existingVm = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.GetDbEntry(), data));
             if (existingVm != null)
             {
                 return existingVm;
@@ -82,7 +81,8 @@ namespace Anno1800Planner.Common
         public void RemoveItem(TDbEntry data)
         {
             // Find the corresponding ViewModel by searching for the one that wraps this data.
-            var vmToRemove = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.Data, data));
+            //var vmToRemove = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.Data, data));
+            var vmToRemove = this.FirstOrDefault(vm => EqualityComparer<TDbEntry>.Default.Equals(vm.GetDbEntry(), data));
 
             if (vmToRemove != null)
             {
@@ -98,7 +98,8 @@ namespace Anno1800Planner.Common
             viewModel.PropertyChanged += HandleItemPropertyChanged;
 
             // Sync the underlying model list.
-            _sourceModelList.Insert(index, viewModel.Data);
+            //_sourceModelList.Insert(index, viewModel.Data);
+            _sourceModelList.Insert(index, viewModel.GetDbEntry());
             base.InsertItem(index, viewModel);
         }
 
@@ -110,7 +111,8 @@ namespace Anno1800Planner.Common
             viewModelToRemove.PropertyChanged -= HandleItemPropertyChanged;
 
             // Sync the underlying model list.
-            _sourceModelList.Remove(viewModelToRemove.Data);
+            //_sourceModelList.Remove(viewModelToRemove.Data);
+            _sourceModelList.Remove(viewModelToRemove.GetDbEntry());
             base.RemoveItem(index);
         }
 
@@ -139,7 +141,7 @@ namespace Anno1800Planner.Common
         protected virtual void OnModelDataChanged(object? sender, PropertyChangedEventArgs e)
         {
             ModelDataChanged?.Invoke(sender, e);
-            Database.Instance.MarkDirty(); // Centralize marking the database as dirty.
+            DB.MarkDirty(); // Centralize marking the database as dirty.
         }
     }
 

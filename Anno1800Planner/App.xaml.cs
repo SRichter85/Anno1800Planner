@@ -17,7 +17,7 @@ public partial class App : Application
     }
     protected override void OnExit(ExitEventArgs e)
     {
-        if (Database.Instance.HasUnsavedChanges)
+        if (DB.HasUnsavedChanges)
         {
             var result = MessageBox.Show("You have unsaved changes. Save before exit?", "Exit", MessageBoxButton.YesNoCancel);
             if (result == MessageBoxResult.Cancel)
@@ -27,7 +27,7 @@ public partial class App : Application
             }
             else if (result == MessageBoxResult.Yes)
             {
-                Database.Instance.Save();
+                DB.Save();
             }
         }
 

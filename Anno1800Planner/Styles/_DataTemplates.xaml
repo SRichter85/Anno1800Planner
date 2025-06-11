@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:vm="clr-namespace:Anno1800Planner.ViewModels">
+    <DataTemplate x:Key="BuildingCardDataTemplate" DataType="{x:Type vm:BuildingVM}">
+        <Border Background="{DynamicResource AnnoCardBackgroundBrush}"
+        BorderBrush="{DynamicResource AnnoBorderBrush}"
+        BorderThickness="1" CornerRadius="4" Margin="5" Padding="15">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="5" Opacity="0.15" />
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="{Binding Reference.Name}" Style="{StaticResource H2TextBlock}" Margin="0,0,0,5" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center"/>
+                <Separator Grid.Row="1" Margin="0,5" Background="{DynamicResource AnnoBorderBrush}"/>
+                <Grid Grid.Row="2" Margin="0,5,0,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="Requires" Foreground="{DynamicResource AnnoSubtleTextBrush}" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <ItemsControl ItemsSource="{Binding Reference.Requires}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" FontSize="14" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                    <TextBlock Grid.Column="1" Text="→" FontSize="24" FontWeight="Bold" Margin="10,0" VerticalAlignment="Center" Foreground="{DynamicResource AnnoAccentGoldBrush}"/>
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock Text="Produces" Foreground="{DynamicResource AnnoSubtleTextBrush}" FontSize="12" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                        <ItemsControl ItemsSource="{Binding Reference.Produces}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" FontSize="14" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Grid>
+                <Separator Grid.Row="3" Margin="0,5" Background="{DynamicResource AnnoBorderBrush}"/>
+                <Grid Grid.Row="4" Margin="0,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="👤" FontSize="14" ToolTip="Workforce" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding Reference.Workforce}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="$" FontWeight="Bold" Foreground="{DynamicResource AnnoAccentGoldBrush}" ToolTip="Maintenance" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding Reference.Maintenance}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="⌛" FontSize="14" ToolTip="Cycle Time" Margin="0,0,5,0"/>
+                        <TextBlock Text="{Binding Reference.ProductionTime}" />
+                        <TextBlock Text="s" Margin="1,0,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

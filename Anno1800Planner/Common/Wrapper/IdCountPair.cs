@@ -39,9 +39,8 @@ namespace Anno1800Planner.Common
             set => Set(() => Data.Count, value);
         }
 
-        public static IdCountPairVM<TId, TChildViewModel> Create(IdCountPair<TId> data)
-        {
-            return new IdCountPairVM<TId, TChildViewModel>(data);
-        }
+        public static IdCountPairVM<TId, TChildViewModel> Create(IdCountPair<TId> data) => new IdCountPairVM<TId, TChildViewModel>(data);
+
+        public IdCountPair<TId> GetDbEntry() => Data;
     }
 }

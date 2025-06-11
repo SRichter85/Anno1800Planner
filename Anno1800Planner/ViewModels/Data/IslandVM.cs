@@ -35,5 +35,7 @@ namespace Anno1800Planner.ViewModels
         public List<LifestyleToggleVM> LifestyleNeeds { get; }
 
         public static IslandVM Create(Island data) => new IslandVM(data);
+
+        public Island GetDbEntry() => Data;
     }
 }

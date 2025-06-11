@@ -10,31 +10,37 @@ namespace Anno1800Planner.ViewModels
 {
     public class ResourceVM : WrapperVM<ResourceId, Resource>, ICreatable<ResourceVM, ResourceId>
     {
-        public ResourceVM(ResourceId id) : base(id, Game.ResourceResolver) { }
+        public ResourceVM(ResourceId id) : base(Game.ResourceResolver(id)) { }
 
         public static ResourceVM Create(ResourceId data) => new ResourceVM(data);
+
+        public ResourceId GetDbEntry() => Data;
     }
     public class ShipVM : WrapperVM<ShipId, Ship>, ICreatable<ShipVM, ShipId>
     {
-        public ShipVM(ShipId id) : base(id, Game.ShipResolver) { }
+        public ShipVM(ShipId id) : base(Game.ShipResolver(id)) { }
         public static ShipVM Create(ShipId data) => new ShipVM(data);
+        public ShipId GetDbEntry() => Data;
     }
 
     public class BuildingVM : WrapperVM<BuildingId, Building>, ICreatable<BuildingVM, BuildingId>
     {
-        public BuildingVM(BuildingId id) : base(id, Game.BuildingResolver) { }
+        public BuildingVM(BuildingId id) : base(Game.BuildingResolver(id)) { }
         public static BuildingVM Create(BuildingId data) => new BuildingVM(data);
+        public BuildingId GetDbEntry() => Data;
     }
 
     public class ResidentTierVM : WrapperVM<TierId, ResidentTier>, ICreatable<ResidentTierVM, TierId>
     {
-        public ResidentTierVM(TierId id) : base(id, Game.TierResolver) { }
+        public ResidentTierVM(TierId id) : base(Game.TierResolver(id)) { }
         public static ResidentTierVM Create(TierId data) => new ResidentTierVM(data);
+        public TierId GetDbEntry() => Data;
     }
 
     public class WorldRegionVM : WrapperVM<RegionId, Region>, ICreatable<WorldRegionVM, RegionId>
     {
-        public WorldRegionVM(RegionId id) : base(id, Game.RegionResolver) { }
+        public WorldRegionVM(RegionId id) : base(Game.RegionResolver(id)) { }
         public static WorldRegionVM Create(RegionId data) => new WorldRegionVM(data);
+        public RegionId GetDbEntry() => Data;
     }
 }

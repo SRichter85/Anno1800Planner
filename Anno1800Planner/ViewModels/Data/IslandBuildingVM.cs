@@ -48,5 +48,7 @@ namespace Anno1800Planner.ViewModels
         }
 
         public static IslandBuildingVM Create(IslandBuildingData data) => new IslandBuildingVM(data);
+
+        public IslandBuildingData GetDbEntry() => Data;
     }
 }

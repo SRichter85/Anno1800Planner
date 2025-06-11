@@ -24,41 +24,9 @@ namespace Anno1800Planner.Views
     /// </summary>
     public partial class ProductionChainConfigurationView : UserControl
     {
-        private bool _isEditingName = false;
-
         public ProductionChainConfigurationView()
         {
             InitializeComponent();
-            //ViewModel = new ProductionChainsVM();
-            //DataContext = ViewModel;
         }
-
-        public ProductionChainConfigurationViewVM ViewModel { get; }
-
-        public void RefreshData()
-        {
-            ViewModel.RefreshData();
-        }
-        private void AddChain_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.AddChain();
-        }
-
-        private void DeleteChain_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.DeleteChain();
-        }
-
-        private void EditChain_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedChain = ViewModel.SelectedChain;
-            if (selectedChain != null)
-            {
-                if (Application.Current.MainWindow is MainWindow mw)
-                    mw.NavigateToProductionChain(selectedChain);
-            }
-        }
-
-        
     }
 }

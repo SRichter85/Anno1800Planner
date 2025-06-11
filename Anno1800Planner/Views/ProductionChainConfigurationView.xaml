@@ -1,32 +1,75 @@
 ﻿<UserControl x:Class="Anno1800Planner.Views.ProductionChainConfigurationView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Height="Auto" Width="Auto">
-    <UserControl.Resources>
-        <CollectionViewSource x:Key="GroupedBuildings"
-                          Source="{Binding Buildings}">
-            <CollectionViewSource.GroupDescriptions>
-                <PropertyGroupDescription PropertyName="Item.Tier.Name"/>
-            </CollectionViewSource.GroupDescriptions>
-        </CollectionViewSource>
-    </UserControl.Resources>
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:ProductionChainConfigurationViewVM, IsDesignTimeCreatable=False}"
+             Background="{DynamicResource AnnoBackgroundBrush}"
+             Padding="10">
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*" />
-            <ColumnDefinition Width="2.5*" />
+            <!-- Left column for the list of chains -->
+            <ColumnDefinition Width="300" />
+            <!-- Right column for the selected chain's details -->
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Left: List of Chains -->
-        <StackPanel Grid.Column="0" >
-            <TextBlock Text="Production Chains" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
-            <Button Content="+ Add Chain" Click="AddChain_Click" Margin="0 0 0 5"/>
-            <Button Content="− Delete Chain" Click="DeleteChain_Click" Margin="0 5 0 0"/>
-            <Button Content="x Edit Chain" Click="EditChain_Click" Margin="0 5 0 0"/>
-            <ListBox Grid.Column="0"
-                ItemsSource="{Binding ProductionChains}"
-                SelectedItem="{Binding SelectedChain, Mode=TwoWay}"
-                DisplayMemberPath="Name">
-            </ListBox>
-        </StackPanel>
+        <!-- Left Panel: List of Chains -->
+        <Border Grid.Column="0" 
+                Background="{DynamicResource AnnoCardBackgroundBrush}"
+                BorderBrush="{DynamicResource AnnoBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="15">
+            <DockPanel>
+                <!-- Header -->
+                <TextBlock DockPanel.Dock="Top" Text="Production Chains" Style="{StaticResource H2TextBlock}" Margin="0,0,0,10"/>
+
+                <!-- Action Buttons -->
+                <WrapPanel DockPanel.Dock="Top" Margin="0,0,0,15">
+                    <Button Content="+ Add" ToolTip="Add a new chain" Command="{Binding AddChainCommand}" Style="{StaticResource AnnoButtonStyle}" Margin="0,0,5,0"/>
+                    <Button Content="− Remove" ToolTip="Remove the selected chain" Command="{Binding DeleteSelectedChainCommand}" Style="{StaticResource AnnoButtonStyle}" Margin="0,0,5,0"/>
+                    <Button Content="Edit" ToolTip="Edit the selected chain" Command="{Binding EditSelectedChainCommand}" Style="{StaticResource AnnoButtonStyle}"/>
+                </WrapPanel>
+
+                <!-- ListBox fills the remaining space -->
+                <Border BorderBrush="{DynamicResource AnnoBorderBrush}" BorderThickness="1" CornerRadius="3">
+                    <ListBox ItemsSource="{Binding ProductionChains}"
+                             SelectedItem="{Binding ProductionChains.SelectedItem, Mode=TwoWay}"
+                             Style="{StaticResource AnnoListBoxStyle}"
+                             ItemContainerStyle="{StaticResource AnnoListBoxItemStyle}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <!-- The Data property is the ProductionChain model -->
+                                <TextBlock Text="{Binding Name}" Padding="5,2"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </DockPanel>
+        </Border>
+
+        <!-- Right Panel: Placeholder for Selected Chain Details -->
+        <Border Grid.Column="1" Margin="10,0,0,0"
+                Background="{DynamicResource AnnoCardBackgroundBrush}"
+                BorderBrush="{DynamicResource AnnoBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="20">
+
+            <!-- This ContentControl will display the view for the selected ProductionChainVM -->
+            <!-- You would typically have another DataTemplate in App.xaml for ProductionChainVM -->
+            <!-- For now, we show a placeholder -->
+            <TextBlock Text="Select a chain to edit."
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Style="{StaticResource H2TextBlock}"
+                       Foreground="{DynamicResource AnnoSubtleTextBrush}"
+                       Visibility="{Binding ProductionChains.SelectedItem, Converter={StaticResource NullToVisibleConverter}}"/>
+
+        </Border>
     </Grid>
 </UserControl>

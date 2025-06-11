@@ -10,9 +10,19 @@ using System.Windows.Input;
 
 namespace Anno1800Planner.ViewModels
 {
-    public class ProductionChainVM : WrapperVM<Guid, ProductionChain>, ICreatable<ProductionChainVM, Guid>
+    public class ProductionChainVM : WrapperVM<Guid, ProductionChain>, ICreatable<ProductionChainVM, Guid>, ICreatable<ProductionChainVM, ProductionChain>
     {
-        public ProductionChainVM(Guid data) : base(data, Database.ProductionChainResolver)
+        //public ProductionChainVM(Guid data) : base(data, Database.ProductionChainResolver)
+        //{
+        //    Buildings = new SyncedCountPairCollection<BuildingId, BuildingVM>(Reference.Buildings);
+        //    Buildings.ModelDataChanged += (_, _) => RefreshCalculated();
+        //    RemoveBuildingCommand = new RelayCommand(
+        //        execute: Buildings.RemoveSelectedItem,
+        //        canExecute: () => Buildings.SelectedItem != null
+        //    );
+        //}
+
+        public ProductionChainVM(ProductionChain model) : base(model)
         {
             Buildings = new SyncedCountPairCollection<BuildingId, BuildingVM>(Reference.Buildings);
             Buildings.ModelDataChanged += (_, _) => RefreshCalculated();
@@ -46,6 +56,12 @@ namespace Anno1800Planner.ViewModels
         }
 
 
-        public static ProductionChainVM Create(Guid data) => new ProductionChainVM(data);
+        public static ProductionChainVM Create(Guid data) => new ProductionChainVM(DB.ProductionChainResolver(data));
+
+        public static ProductionChainVM Create(ProductionChain data) => new ProductionChainVM(data);
+
+        Guid ICreatable<ProductionChainVM, Guid>.GetDbEntry() => Data;
+
+        ProductionChain ICreatable<ProductionChainVM, ProductionChain>.GetDbEntry() => Reference;
     }
 }

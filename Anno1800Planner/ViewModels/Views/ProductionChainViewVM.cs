@@ -46,7 +46,12 @@ namespace Anno1800Planner.ViewModels
                 chain.Buildings.AddItem(model);
             }
 
-            Database.Instance.MarkDirty();
+            DB.MarkDirty();
+        }
+
+        internal void AddSelectedBuildingToChain()
+        {
+            AddBuilding();
         }
     }
 }

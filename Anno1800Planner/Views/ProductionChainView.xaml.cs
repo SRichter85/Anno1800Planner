@@ -22,25 +22,20 @@ namespace Anno1800Planner.Views
     /// </summary>
     public partial class ProductionChainView : UserControl
     {
-        private bool _isEditingName = false;
+
 
         public ProductionChainView()
         {
             InitializeComponent();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        private void AllBuildingsList_MouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            if (Application.Current.MainWindow is MainWindow mw)
-                mw.NavigateToProductionConfigurator();
+            var vm = DataContext as ProductionChainViewVM;
+            if (vm != null)
+            {
+                vm.AddSelectedBuildingToChain();
+            }
         }
-        private void AllBuildingsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //if (DataContext is ProductionChainViewVM vm && vm.SelectedBuilding is Building building)
-            //{
-            //    vm.AddBuilding(building);
-            //}
-        }
-
     }
 }

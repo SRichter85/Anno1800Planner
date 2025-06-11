@@ -24,7 +24,7 @@ namespace Anno1800Planner.Common
 
             field = value;
             OnPropertyChanged(propertyName);
-            Database.Instance.MarkDirty();
+            DB.MarkDirty();
             return true;
         }
 
@@ -53,7 +53,7 @@ namespace Anno1800Planner.Common
             propInfo.SetValue(target, newValue);
 
             OnPropertyChanged(propInfo.Name);
-            Database.Instance.MarkDirty();
+            DB.MarkDirty();
             return true;
         }
 
@@ -65,7 +65,7 @@ namespace Anno1800Planner.Common
 
             assign();
             OnPropertyChanged(propertyName);
-            Database.Instance.MarkDirty();
+            DB.MarkDirty();
             return true;
         }
     }
