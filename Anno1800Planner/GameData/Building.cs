@@ -85,7 +85,16 @@ namespace Anno1800Planner.GameData
             .AddRequiredResource(ResourceId.Wood)
             .AddProducedResource(ResourceId.Timber);
 
-            dict[BuildingId.GrainFarm] = new Building
+            dict[BuildingId.Pub] = new Building
+            {
+                Name = "Pub",
+                Tier = TierId.Farmers,
+                Maintenance = 1,
+            };
+            
+
+
+                dict[BuildingId.GrainFarm] = new Building
             {
                 Name = "Grain Farm",
                 Tier = TierId.Farmers,
@@ -135,6 +144,7 @@ namespace Anno1800Planner.GameData
         Sawmill,
         GrainFarm,
         CottonPlantation,
-        Mill
+        Mill,
+        Pub
     }
 }

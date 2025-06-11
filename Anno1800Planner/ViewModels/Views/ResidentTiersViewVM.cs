@@ -14,9 +14,9 @@ namespace Anno1800Planner.ViewModels
     {
         public ResidentTiersViewVM(MainVM mainVM) : base(mainVM)
         {
-            Tiers = [.. Game.AllResidentTiers()];
+            Tiers = [.. Enum.GetValues<TierId>().Select(ResidentTierVM.Create)];
         }
 
-        public ObservableCollection<ResidentTier> Tiers { get; }
+        public ObservableCollection<ResidentTierVM> Tiers { get; }
     }
 }

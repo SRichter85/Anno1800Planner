@@ -13,12 +13,12 @@ namespace Anno1800Planner.GameData
         public BuildingId? Building { get; set; }
 
         // Only relevant if Resource is set
-        public int ConsumptionIntervalMinutes { get; set; }
+        public double ConsumptionIntervalMinutes { get; set; }
 
         public NeedCategory Category { get; set; }
 
         public int WorkforceBonus { get; set; } = 0;
-        public int IncomeBonus { get; set; } = 0;
+        public double IncomeBonus { get; set; } = 0;
 
         public bool IsForResource => Resource != null;
         public bool IsForBuilding => Building != null;
@@ -46,8 +46,8 @@ namespace Anno1800Planner.GameData
 
     public enum NeedCategory
     {
-        Upgrade,
-        Happiness,
+        Basic,
+        Luxury,
         Lifestyle
     }
 }

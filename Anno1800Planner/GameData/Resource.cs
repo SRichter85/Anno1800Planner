@@ -38,13 +38,12 @@ namespace Anno1800Planner.GameData
         {
             dict[ResourceId.Wood] = new Resource("Wood");
             dict[ResourceId.Timber] = new Resource("Timber");
+            dict[ResourceId.WorkClothes] = new Resource("Work Clothes", RegionId.OldWorld);
+            dict[ResourceId.Schnapps] = new Resource("Schnapps", RegionId.OldWorld);
+            dict[ResourceId.Flour] = new Resource("Flour", RegionId.OldWorld);
 
-            dict[ResourceId.Wheat] = new Resource
-            {
-                Name = "Wheat",
-                RequiresFertility = true
-            }
-            .AddProducingRegion(RegionId.OldWorld);
+            
+
             dict[ResourceId.Wheat] = new Resource
             {
                 Name = "Wheat",
@@ -83,6 +82,9 @@ namespace Anno1800Planner.GameData
         Wheat,
         Cotton,
         GoldOre,
-        Fish
+        Fish,
+        WorkClothes,
+        Schnapps,
+        Flour
     }
 }

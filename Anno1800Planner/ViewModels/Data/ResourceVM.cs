@@ -32,9 +32,16 @@ namespace Anno1800Planner.ViewModels
 
     public class ResidentTierVM : WrapperVM<TierId, ResidentTier>, ICreatable<ResidentTierVM, TierId>
     {
-        public ResidentTierVM(TierId id) : base(Game.TierResolver(id)) { }
+        public ResidentTierVM(TierId id) : base(Game.TierResolver(id))
+        {
+            Needs.AddRange(Reference.Needs.Select(NeedVM.Create));
+        }
+
         public static ResidentTierVM Create(TierId data) => new ResidentTierVM(data);
         public TierId GetDbEntry() => Data;
+
+
+        public List<NeedVM> Needs { get; } = new();
     }
 
     public class WorldRegionVM : WrapperVM<RegionId, Region>, ICreatable<WorldRegionVM, RegionId>

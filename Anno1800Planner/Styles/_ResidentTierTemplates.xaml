@@ -1,0 +1,137 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+                    xmlns:data="clr-namespace:Anno1800Planner.GameData">
+
+    <!--
+    ================================================================
+    RESIDENT TIER VIEW TEMPLATES (v2.0 - Layout Overhaul)
+    ================================================================
+    This version redesigns the Need item display to be a single,
+    horizontal row with all relevant data and corrects data bindings.
+    -->
+
+    <!-- DataTemplate for a single Need item -->
+    <!-- This template now assumes its DataContext is a 'NeedVM' wrapper -->
+    <DataTemplate x:Key="NeedItemDataTemplate" DataType="{x:Type vm:NeedVM}">
+        <Border BorderBrush="{DynamicResource AnnoBorderBrush}" BorderThickness="0,0,0,1" Padding="5" Margin="2" MinWidth="200">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Icon -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Name & Consumption -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Bonuses -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Column 0: Icon -->
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+                            <Setter Property="Text" Value="📦"/>
+                            <Setter Property="ToolTip" Value="Resource Need"/>
+                            <Setter Property="FontSize" Value="16"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Data.IsForBuilding}" Value="True">
+                                    <Setter Property="Text" Value="🏠"/>
+                                    <Setter Property="ToolTip" Value="Building Need"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <!-- Column 1: Name and Consumption Rate -->
+                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                    <!-- Name is now bound to the property on the NeedVM -->
+                    <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="14"/>
+
+                    <!-- Consumption Rate is also bound to a formatted property on the NeedVM -->
+                    <TextBlock Text="{Binding ConsumptionRateDisplay}" Visibility="{Binding IsConsumptionVisible}" Opacity="0.7" FontSize="12"/>
+                </StackPanel>
+
+                <!-- Column 2: Stats (Income/Workforce) -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,15,0" ToolTip="Income Bonus">
+                        <TextBlock Text="$" FontWeight="Bold" Foreground="{DynamicResource AnnoAccentGoldBrush}" Margin="0,0,3,0"/>
+                        <TextBlock Text="{Binding Data.IncomeBonus}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" ToolTip="Workforce Bonus">
+                        <TextBlock Text="👤" FontSize="12" Margin="0,0,3,0"/>
+                        <TextBlock Text="{Binding Data.WorkforceBonus}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <!-- DataTemplate for the main ResidentTier card -->
+    <!-- This now assumes the DataContext is ResidentTierVM -->
+    <DataTemplate x:Key="ResidentTierCardDataTemplate" DataType="{x:Type vm:ResidentTierVM}">
+        <!-- The main card border -->
+        <Border Background="{DynamicResource AnnoCardBackgroundBrush}"
+                BorderBrush="{DynamicResource AnnoBorderBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Margin="5"
+                Padding="15">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="3" BlurRadius="5" Opacity="0.15" />
+            </Border.Effect>
+
+            <DockPanel>
+                <!-- A CollectionViewSource local to this template for grouping the needs by category -->
+                <DockPanel.Resources>
+                    <!-- This now assumes your ResidentTierVM will expose a SyncedCollection of NeedVMs -->
+                    <CollectionViewSource x:Key="GroupedNeeds" Source="{Binding Needs}">
+                        <CollectionViewSource.GroupDescriptions>
+                            <PropertyGroupDescription PropertyName="Data.Category"/>
+                        </CollectionViewSource.GroupDescriptions>
+                    </CollectionViewSource>
+                </DockPanel.Resources>
+
+                <!-- Header: Resident Name and Region -->
+                <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,0,0,10">
+                    <!-- Bind to the 'Data' property of the ResidentTierVM -->
+                    <TextBlock Text="{Binding Reference.Name}" Style="{StaticResource H2TextBlock}" />
+                    <TextBlock Text="{Binding Reference.Region}" HorizontalAlignment="Center" Opacity="0.6"/>
+                </StackPanel>
+
+                <Separator DockPanel.Dock="Top" Margin="0,0,0,10" Background="{DynamicResource AnnoBorderBrush}"/>
+
+                <!-- ItemsControl for the groups of needs -->
+                <ItemsControl ItemsSource="{Binding Source={StaticResource GroupedNeeds}}">
+                    <!-- This panel lays out the groups (Basic, Luxury, etc.) horizontally -->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.GroupStyle>
+                        <GroupStyle>
+                            <!-- The HeaderTemplate defines how "Basic", "Luxury", etc. look -->
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="15,0,15,5" Foreground="{DynamicResource AnnoSubtleTextBrush}" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                            <!-- The Panel for items within a group is a vertical StackPanel -->
+                            <GroupStyle.Panel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </GroupStyle.Panel>
+                        </GroupStyle>
+                    </ItemsControl.GroupStyle>
+
+                    <!-- The ItemTemplate for a single need points to our other template -->
+                    <ItemsControl.ItemTemplate>
+                        <StaticResource ResourceKey="NeedItemDataTemplate"/>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </DockPanel>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

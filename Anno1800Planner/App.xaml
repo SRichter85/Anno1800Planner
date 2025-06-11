@@ -12,6 +12,7 @@
                 <!-- Order matters here. Define styles before they are used. -->
                 <ResourceDictionary Source="/Styles/_Styles.xaml"/>
                 <ResourceDictionary Source="/Styles/_DataTemplates.xaml"/>
+                <ResourceDictionary Source="/Styles/_ResidentTierTemplates.xaml"/>
                 <ResourceDictionary Source="/Styles/_ViewMappings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

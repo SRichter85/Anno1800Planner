@@ -41,8 +41,12 @@ namespace Anno1800Planner.GameData
 
         private static void InitializeNeeds()
         {
-            AddUpgradeNeed(TierId.Farmers, BuildingId.Marketplace, workforce: 5);
-            AddUpgradeNeed(TierId.Farmers, ResourceId.Fish, 40, income: 20);
+            AddBasicNeed(TierId.Farmers, BuildingId.Marketplace, workforce: 5);
+            AddBasicNeed(TierId.Farmers, ResourceId.Fish, 40, income: 1, workforce: 3);
+            AddBasicNeed(TierId.Farmers, ResourceId.WorkClothes, 32.5, income: 3, workforce: 2);
+            AddLuxuryNeed(TierId.Farmers, ResourceId.Schnapps, 30, income: 3);
+            AddLuxuryNeed(TierId.Farmers, BuildingId.Pub, income: 1.2);
+            AddLifestyleNeed(TierId.Farmers, ResourceId.Flour, 41.67, workforce: 1, income: 0.6);
         }
 
         private static void AddNeed(TierId tier, Need need)
@@ -52,10 +56,18 @@ namespace Anno1800Planner.GameData
             _instance._needs.Add(need);
         }
 
-        private static void AddUpgradeNeed(TierId tier, ResourceId resource, int consumption, int income = 0, int workforce = 0)
-            => AddNeed(tier, new Need { Resource = resource, Category = NeedCategory.Upgrade, ConsumptionIntervalMinutes = consumption, IncomeBonus = income, WorkforceBonus = workforce });
-        private static void AddUpgradeNeed(TierId tier, BuildingId building, int income = 0, int workforce = 0)
-            => AddNeed(tier, new Need { Building = building, Category = NeedCategory.Upgrade, ConsumptionIntervalMinutes = 0, IncomeBonus = income, WorkforceBonus = workforce });
+        private static void AddBasicNeed(TierId tier, ResourceId resource, double consumption, double income = 0, int workforce = 0)
+            => AddNeed(tier, new Need { Resource = resource, Category = NeedCategory.Basic, ConsumptionIntervalMinutes = consumption, IncomeBonus = income, WorkforceBonus = workforce });
+        private static void AddBasicNeed(TierId tier, BuildingId building, double income = 0, int workforce = 0)
+            => AddNeed(tier, new Need { Building = building, Category = NeedCategory.Basic, ConsumptionIntervalMinutes = 0, IncomeBonus = income, WorkforceBonus = workforce });
+        private static void AddLuxuryNeed(TierId tier, ResourceId resource, double consumption, double income = 0, int workforce = 0)
+            => AddNeed(tier, new Need { Resource = resource, Category = NeedCategory.Luxury, ConsumptionIntervalMinutes = consumption, IncomeBonus = income, WorkforceBonus = workforce });
+        private static void AddLuxuryNeed(TierId tier, BuildingId building, double income = 0, int workforce = 0)
+            => AddNeed(tier, new Need { Building = building, Category = NeedCategory.Luxury, ConsumptionIntervalMinutes = 0, IncomeBonus = income, WorkforceBonus = workforce });
+        private static void AddLifestyleNeed(TierId tier, ResourceId resource, double consumption, double income = 0, int workforce = 0)
+            => AddNeed(tier, new Need { Resource = resource, Category = NeedCategory.Lifestyle, ConsumptionIntervalMinutes = consumption, IncomeBonus = income, WorkforceBonus = workforce });
+        private static void AddLifestyleNeed(TierId tier, BuildingId building, double income = 0, int workforce = 0)
+            => AddNeed(tier, new Need { Building = building, Category = NeedCategory.Lifestyle, ConsumptionIntervalMinutes = 0, IncomeBonus = income, WorkforceBonus = workforce });
 
 
         // Helper Lookup Classes
