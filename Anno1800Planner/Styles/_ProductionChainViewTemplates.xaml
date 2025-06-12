@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+                    xmlns:common="clr-namespace:Anno1800Planner.Common">
+
+    <!-- A converter to truncate the building name for the icon placeholder -->
+    <common:StringTruncateConverter x:Key="StringTruncateConverter" MaxLength="6"/>
+
+    <!-- A custom style for the TabControl to match the Anno theme -->
+    <Style x:Key="AnnoTabControlStyle" TargetType="TabControl">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <!-- A custom style for the TabItems (the tabs themselves) -->
+    <Style x:Key="AnnoTabItemStyle" TargetType="TabItem">
+        <Setter Property="Background" Value="{DynamicResource AnnoCardBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource AnnoSubtleTextBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource AnnoBorderBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource AnnoFont}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="border" 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1,1,1,0"
+                            CornerRadius="4,4,0,0"
+                            Margin="0,0,2,0"
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource AnnoBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AnnoForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#99FFFFFF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- The DataTemplate for a single building "card" -->
+    <DataTemplate x:Key="BuildingIconCardTemplate" DataType="{x:Type vm:BuildingVM}">
+        <Border Width="90" Height="90" Margin="5"
+                BorderBrush="{DynamicResource AnnoBorderBrush}"
+                Background="#33FFFFFF"
+                BorderThickness="1"
+                CornerRadius="3">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <!-- Icon Placeholder: First 6 letters of the name -->
+                <TextBlock Text="{Binding Reference.Name, Converter={StaticResource StringTruncateConverter}}"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           ToolTip="{Binding Reference.Name}"/>
+
+                <!-- Add Button -->
+                <Button Content="+ Add" 
+                        Margin="0,8,0,0" 
+                        Padding="8,2"
+                        FontSize="11"
+                        Style="{StaticResource AnnoButtonStyle}"
+                        Command="{Binding DataContext.AddBuildingToSelectedChainCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                        CommandParameter="{Binding}"/>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+</ResourceDictionary>

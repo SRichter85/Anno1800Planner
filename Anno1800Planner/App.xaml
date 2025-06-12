@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="/Styles/_Styles.xaml"/>
                 <ResourceDictionary Source="/Styles/_DataTemplates.xaml"/>
                 <ResourceDictionary Source="/Styles/_ResidentTierTemplates.xaml"/>
+                <ResourceDictionary Source="/Styles/_ProductionChainViewTemplates.xaml"/>
                 <ResourceDictionary Source="/Styles/_ViewMappings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

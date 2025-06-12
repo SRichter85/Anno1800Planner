@@ -4,27 +4,54 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:Anno1800Planner.ViewModels"
+             xmlns:local="clr-namespace:Anno1800Planner.Views"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=vm:ProductionChainViewVM, IsDesignTimeCreatable=False}">
+             d:DataContext="{d:DesignInstance Type=vm:ProductionChainConfigurationViewVM, IsDesignTimeCreatable=False}">
+
+    <UserControl.Resources>
+        <!-- This now correctly finds the AllBuildings property on the ancestor's DataContext -->
+        <CollectionViewSource x:Key="GroupedBuildingsSource" 
+                              Source="{Binding DataContext.AllBuildings, RelativeSource={RelativeSource AncestorType=local:ProductionChainConfigurationView}}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Reference.Tier.Name"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
 
     <Border Style="{StaticResource AnnoPanelBorderStyle}">
         <DockPanel>
-            <TextBlock DockPanel.Dock="Top" Text="Available Buildings" Style="{StaticResource H2TextBlock}" Margin="10"/>
+            <TextBlock DockPanel.Dock="Top" Text="Available Buildings (Double-click to add)" Style="{StaticResource H2TextBlock}" Margin="10"/>
 
-            <!-- This ListBox binds to the AllBuildings collection from the parent ViewModel -->
-            <ListBox ItemsSource="{Binding AllBuildings}"
-                     SelectedItem="{Binding AllBuildings.SelectedItem, Mode=TwoWay}"
+            <ListBox ItemsSource="{Binding Source={StaticResource GroupedBuildingsSource}}"
                      Style="{StaticResource AnnoListBoxStyle}" 
                      ItemContainerStyle="{StaticResource AnnoListBoxItemStyle}">
 
+                <!-- This binding also looks up the tree to find the parent VM's property -->
+                <ListBox.SelectedItem>
+                    <Binding Path="DataContext.AllBuildings.SelectedItem" 
+                             RelativeSource="{RelativeSource AncestorType=local:ProductionChainConfigurationView}"
+                             Mode="TwoWay"/>
+                </ListBox.SelectedItem>
+
                 <ListBox.InputBindings>
-                    <!-- The command binding is simplified as it now directly accesses the DataContext -->
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding AddBuildingToChainCommand}"/>
+                    <!-- And the command does the same -->
+                    <MouseBinding Gesture="LeftDoubleClick" 
+                                  Command="{Binding DataContext.AddBuildingToSelectedChainCommand, RelativeSource={RelativeSource AncestorType=local:ProductionChainConfigurationView}}"/>
                 </ListBox.InputBindings>
+
+                <ListBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" Margin="4" Foreground="{DynamicResource AnnoSubtleTextBrush}"/>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListBox.GroupStyle>
 
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Reference.Name}" Margin="10,0,0,0"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 G:\Projects\Anno1800Planner\Anno1800Planner\App.xaml
-16670581392
+17-1405773208
 
-611388637650
+62-1025626843
 1981839832580
-Controls\EditableTextBlock.xaml;MainWindow.xaml;Styles\_DataTemplates.xaml;Styles\_ResidentTierTemplates.xaml;Styles\_Styles.xaml;Styles\_ViewMappings.xaml;Views\GameDataViews\BuildingsView.xaml;Views\GameDataViews\ResidentTiersView.xaml;Views\GameDataViews\ResourcesView.xaml;Views\IslandView.xaml;Views\PlanView.xaml;Views\ProductionChain\ProductionChainConfigurationView.xaml;Views\ProductionChain\ProductionChainView.Available.xaml;Views\ProductionChain\ProductionChainView.Current.xaml;Views\ProductionChain\ProductionChainView.Summary.xaml;Views\ProductionChain\ProductionChainView.xaml;
+Controls\EditableTextBlock.xaml;MainWindow.xaml;Styles\_DataTemplates.xaml;Styles\_ProductionChainViewTemplates.xaml;Styles\_ResidentTierTemplates.xaml;Styles\_Styles.xaml;Styles\_ViewMappings.xaml;Views\GameDataViews\BuildingsView.xaml;Views\GameDataViews\ResidentTiersView.xaml;Views\GameDataViews\ResourcesView.xaml;Views\IslandView.xaml;Views\PlanView.xaml;Views\ProductionChain\ProductionChainConfigurationView.xaml;Views\ProductionChain\ProductionChainView.Available.xaml;Views\ProductionChain\ProductionChainView.Current.xaml;Views\ProductionChain\ProductionChainView.Summary.xaml;Views\ProductionChain\ProductionChainView.xaml;
 
 False
 
